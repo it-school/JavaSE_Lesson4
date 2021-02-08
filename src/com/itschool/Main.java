@@ -48,7 +48,7 @@ public class Main {
 //        ClassWork3(arr);
 //        ClassWork4(arr);
 //        ClassWork5();
-      ClassWork6();
+//      ClassWork6();
 //        ClassWork7();
 //        ClassWork7a();  // С использованием сортировки и выбором 3 крайних значений
 //        ClassWork8();
@@ -56,6 +56,7 @@ public class Main {
       // Домашние задания
 //        Homework_Example_1();
 //        Homework_Example_2();
+      Homework_Example_9();
    }
 
    private static void ReverseArray(int[] arr) {
@@ -988,5 +989,36 @@ Arrays.sort(B);
       } else {
          System.out.println("Cумма элементов массива отрицательна");
       }
+   }
+
+   private static void Homework_Example_9() {
+   /*
+      Дан массив целых чисел. Удалить из него:
+      а) все четные элементы, стоящие на нечетных местах;
+      б) все элементы, кратные 3 или 5.
+   */
+      int[] array = new int[12];
+      for (int i = 0; i < array.length; i++) {
+         array[i] = (int) (Math.random() * 10);
+      }
+
+      System.out.println(Arrays.toString(array));
+
+      for (int i = 1; i < array.length; i++) {
+         if (array[i] != 0 && array[i] % 2 == 0 && i % 2 == 1) {
+            int n = i;
+            int currentLength = array.length;
+            for (int j = n; j < array.length - 1; j++) {
+               array[j] = array[j + 1];
+            }
+            currentLength--;
+            array = Arrays.copyOf(array, currentLength);
+            System.out.println(Arrays.toString(array));
+         }
+      }
+
+      System.out.println(Arrays.toString(array));
+
+
    }
 }
