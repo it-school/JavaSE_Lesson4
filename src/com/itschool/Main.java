@@ -13,7 +13,7 @@ public class Main {
 //        ArraysExample_4();
 //        ArraysExample_5();
 //        ArraysExample_6();
-//        ArraysExample_7();
+        ArraysExample_7();
 
 //        RandomArray();
 
@@ -56,7 +56,7 @@ public class Main {
       // Домашние задания
 //        Homework_Example_1();
 //        Homework_Example_2();
-      Homework_Example_9();
+//      Homework_Example_9();
    }
 
    private static void ReverseArray(int[] arr) {
@@ -129,11 +129,12 @@ public class Main {
 
    }
 
-   private static void FillArrayRandomly(int[] arr) {
+   private static int[] FillArrayRandomly(int[] arr) {
       for (int i = 0; i < arr.length; i++) {
          arr[i] = r.nextInt(20);
       }
       System.out.println(Arrays.toString(arr));
+      return arr;
    }
 
    private static void ClassWork3(int[] arr) {
@@ -665,15 +666,16 @@ public class Main {
 
       int[] a = {10, 20, 30};
       int[] b = {10, 20, 30};
-      boolean flag = true;
+      boolean flag = a.length == b.length;
 
-      for (int i = 0; i < a.length; i++) {
-         if (a[i] != b[i]) {
-            flag = false;
-            break;
+      if (flag == true) {
+         for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+               flag = false;
+               break;
+            }
          }
       }
-
       if (flag) {
          System.out.println("Элементы массивов a и b - равны");
       } else {
@@ -786,7 +788,6 @@ public class Main {
       short[] a_short = new short[N]; // Займет в памяти 20000 байтов
       int[] a_int = new int[N];       // Займет в памяти 40000 байтов
       long[] a_long = new long[N];    // Займет в памяти 80000 байтов
-
    }
 
    private static void ArraysExample_7() {
@@ -819,7 +820,7 @@ public class Main {
       System.out.println(Arrays.toString(A));
 
 
-      int[] B = new int[N * N * N * N * N * N * N];
+      int[] B = new int[N * N * N * N * N * N * N * N];
       for (int i = 0; i < B.length; i++) {
          B[i] = (int) (5 + Math.random() * 100000);
       }
