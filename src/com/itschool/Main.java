@@ -94,12 +94,13 @@ public class Main {
 
       System.out.print("Массив array: ");
 
-      // Вывод на экран значений элементов массива.
+      // Вывод на экран значений элементов массива по индексам
       for (int i = 0; i < array.length; i++) {
          System.out.print(array[i] + "  ");
       }
 
       System.out.println();
+      // Вывод на экран значений элементов массива с использованием встроенного метода класса Arrays
       System.out.println(Arrays.toString(array));
    }
 
@@ -174,21 +175,23 @@ public class Main {
 
       Locale.setDefault(Locale.US);
       for (int i = 0; i < N; i++) {
-         System.out.print(String.format("%7.2f", (A[i] = (float) (Math.random() * 100))));
+         System.out.printf("%7.2f", (A[i] = (float) (Math.random() * 100)));
       }
 
       System.out.println();
       System.out.println(Arrays.toString(A));
 
       for (float element : A) {
-         System.out.print(String.format("%7.2f", element));
+         System.out.printf("%7.2f", element);
       }
+
 
       // Быстрая сортировка массива по возрастанию
       Arrays.sort(A);
 
+
       // Переворот элементов массива
-      float temp = 0;
+      float temp;
       for (int i = 0; i < A.length / 2; i++) {
          temp = A[i];
          A[i] = A[A.length - 1 - i];
@@ -213,6 +216,7 @@ public class Main {
          }
       }
 
+
       // Линейный поиск значения в массиве в обратном порядке
       for (int i = B.length - 1; i > 0; i--) {
          if (B[i] == 555) {
@@ -222,9 +226,9 @@ public class Main {
          }
       }
 
+      // Бинарный поиск вхождения значения в массив
       System.out.println(n);
       Arrays.sort(B);
-      // Бинарный поиск вхождения значения в массив
       System.out.println("Binary search of 555: " + Arrays.binarySearch(B, 555));
 
 
@@ -244,6 +248,7 @@ public class Main {
       }
       System.out.println(Arrays.toString(A));
       System.out.println(n);
+
 
       // Поиск минимального значения массива
       int[] C = B.clone();
@@ -277,7 +282,7 @@ public class Main {
       System.out.println("Initial array:                 " + Arrays.toString(arr1));
 
       int[] arr2 = Arrays.copyOf(arr1, 5);
-      System.out.println("Subcopy of initial array:      " + Arrays.toString(arr2));
+      System.out.println("SubCopy of initial array:      " + Arrays.toString(arr2));
 
       arr1 = arr2;
       System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
@@ -285,12 +290,11 @@ public class Main {
       System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
    }
 
-   private static int[] fillArrayRandomly(int[] arr) {
+   private static void fillArrayRandomly(int[] arr) {
       for (int i = 0; i < arr.length; i++) {
          arr[i] = r.nextInt(20);
       }
       System.out.println(Arrays.toString(arr));
-      return arr;
    }
 
    /**
@@ -302,17 +306,13 @@ public class Main {
       int[] a = {10, 20, 30};
       System.out.println("Клонируем массив а в массив b");
       int[] b = a.clone();
-      System.out.println("Элементы массивов a и b равны - " +
-              Arrays.equals(a, b));
-      System.out.println("Ссылка а и b указывают на один массив - " +
-              (a.hashCode() == b.hashCode()));
+      System.out.println("Элементы массивов a и b равны - " + Arrays.equals(a, b));
+      System.out.println("Ссылка а и b указывают на один массив - " + (a.hashCode() == b.hashCode()));
 
       System.out.println("Присваиваем массиву b ссылку массива a");
       b = a;
-      System.out.println("Элементы массивов a и b равны - " +
-              Arrays.equals(a, b));
-      System.out.println("Ссылка а и b указывают на один массив - " +
-              (a.hashCode() == b.hashCode()));
+      System.out.println("Элементы массивов a и b равны - " + Arrays.equals(a, b));
+      System.out.println("Ссылка а и b указывают на один массив - " + (a.hashCode() == b.hashCode()));
    }
 
    /**
@@ -350,7 +350,7 @@ public class Main {
       for (int a : array) {
          // Выводим элементы массива на экран
          System.out.print(a + "  ");
-         // Сравниваем текущий миниманльный элемент с i-ым элементом массива
+         // Сравниваем текущий минимальный элемент с i-ым элементом массива
       }
 
       for (int i = 1; i < array.length; i++) {
@@ -391,20 +391,20 @@ public class Main {
    private static void findAverageValue() {
       System.out.println("\nСреднее арифметическое в массиве");
 
-      int[] nums = {4, 8, 10, 12, 16};
+      int[] numbers = {4, 8, 10, 12, 16};
       double sum = 0;
 
-      System.out.print("Массив nums : ");
+      System.out.print("Массив numbers : ");
 
-      for (int a : nums) {
+      for (int a : numbers) {
          System.out.print(a + "  ");
       }
 
-      for (int i = 0; i < nums.length; i++) {
-         sum += nums[i];
+      for (int i = 0; i < numbers.length; i++) {
+         sum += numbers[i];
       }
 
-      sum = sum / nums.length; // общий результат делим на число элементов в массиве
+      sum = sum / numbers.length; // общий результат делим на число элементов в массиве
       System.out.println("Среднее арифметическое: " + String.format("%5.2f", sum));
    }
 
@@ -438,10 +438,12 @@ public class Main {
    }
 
    /**
-    * @param arr
+    * Поиск вхождения значения в массив с использованием линейного поиска
+    *
+    * @param arr массив
     */
    private static void searchInArray(int[] arr) {
-      // Поиск вхождения с использованием линейного поиска
+      //
       int key = 10;
       boolean isFound = false;
       for (int i = 0; i < arr.length; i++) {
@@ -452,7 +454,7 @@ public class Main {
          }
       }
       if (!isFound)
-         System.out.println("Not found using linear saerch");
+         System.out.println("Not found using linear search");
 
       // Поиск вхождения с использованием бинарного поиска
       int[] arrCopy = arr.clone();
@@ -468,9 +470,8 @@ public class Main {
    private static void bubbleSortFromMaxToMin() {
       System.out.println("\n\nBubbleSort - от большего к меньшему");
       int[] num = {203, 134, 123, -2, 124, 0, 14};
-      int j = 0;
+      int j, temp;
       boolean flag = true;
-      int temp;
 
       System.out.print("До сортировки : ");
 
@@ -502,9 +503,8 @@ public class Main {
    private static void bubbleSortFromMinToMax() {
       System.out.println("\n\nBubbleSort - от меньшего к большему");
       int[] num = {203, 134, 123, -2, 124, 0, 14};
-      int j = 0;
+      int j, temp;
       boolean flag = true;
-      int temp;
 
       System.out.print("До сортировки : ");
 
@@ -601,7 +601,8 @@ public class Main {
 
       System.out.print("Массив : ");
 
-      for (int i = 0; i < array.length; i++) {
+      for (int i = 0; i < array.length; i++) //noinspection GrazieInspection
+      {
          // Присваиваем переменной a значение i-го элемента массива array
          int a = array[i];
          // Выводим переменную а, которая равна i-ому элементу массива array
@@ -612,7 +613,7 @@ public class Main {
 
       System.out.print("\nМассив : ");
 
-      // Тоже самое, что и выше
+      // То же самое, что и выше
       for (int a : array) {
          System.out.print(a + "  ");
          a = 20;
@@ -641,7 +642,6 @@ public class Main {
     * программу, определяющую, какой банк выбрать, чтобы выгодно обменять доллары на гривны.
     */
    private static void classWork1() {
-      Random random = new Random();
       final int N = 20;
       double[] buy = new double[N], sell = new double[N];
       for (int i = 0; i < N; i++) {
@@ -715,7 +715,7 @@ public class Main {
    }
 
    /**
-    * Найти произведение элементов массива целых чисел, которые кратны 9    *
+    * Найти произведение элементов массива целых чисел, которые кратны 9
     *
     * @param arr массив
     */
@@ -782,7 +782,7 @@ public class Main {
       Locale.setDefault(Locale.US);
       System.out.println("Расходы: ");
       for (int i = 0; i < N; i++) {
-         System.out.print(String.format("%10.2f", r[i]));
+         System.out.printf("%10.2f", r[i]);
       }
       System.out.println(System.lineSeparator() + "Доходы:  ");
       for (int i = 0; i < N; i++) {
@@ -808,7 +808,7 @@ public class Main {
 
       System.out.println(System.lineSeparator() + "Прибыли: ");
       for (int i = 0; i < N; i++) {
-         System.out.print(String.format("%10.2f", z[i]));
+         System.out.printf("%10.2f", z[i]);
       }
 
       System.out.println(System.lineSeparator() + "Итоговая прибыль: " + String.format("%10.2f", all));
@@ -938,7 +938,7 @@ public class Main {
 
    /**
     * Написать алгоритм переворота элементов массива (смены мест в заданном массиве):
-    * 1-го элемента с последним, 2-го с предпоследним и так далее.
+    * первого элемента - с последним, второго - с предпоследним и так далее.
     */
    private static void classWork8() {
       System.out.println();
@@ -1001,7 +1001,7 @@ public class Main {
 
       int[] array = new int[12];
       // Сумма элементов массива
-      int sumOfElemets = 0;
+      int sumOfElements = 0;
       // Сумма квадратов элементов массива
       int sumOfElementsSqr = 0;
 
@@ -1012,29 +1012,29 @@ public class Main {
          // Выводим i-ый элемент на экран
          System.out.print(array[i] + "  ");
          // Прибавляем i-ый элемент массива к сумме элементов массива
-         sumOfElemets += array[i];
-         // Прибавлеяем квадрат i-го элемента массива к сумме квадратов элементов массива
+         sumOfElements += array[i];
+         // Прибавляем квадрат i-го элемента массива к сумме квадратов элементов массива
          sumOfElementsSqr += array[i] * array[i];
       }
 
       System.out.println();
 
-      if (sumOfElemets % 2 == 0) {
-         System.out.println("Cумма элементов массива есть четное число");
+      if (sumOfElements % 2 == 0) {
+         System.out.println("Сумма элементов массива есть четное число");
       } else {
-         System.out.println("Cумма элементов массива есть нечетное число");
+         System.out.println("Сумма элементов массива есть нечетное число");
       }
 
       if (sumOfElementsSqr >= 10000) {
-         System.out.println("Cумма квадратов элементов массива есть пятизначное число");
+         System.out.println("Сумма квадратов элементов массива есть пятизначное число");
       } else {
-         System.out.println("Cумма квадратов элементов массива есть не пятизначное число");
+         System.out.println("Сумма квадратов элементов массива есть не пятизначное число");
       }
 
-      if (sumOfElemets >= 0) {
-         System.out.println("Cумма элементов массива неотрицательна");
+      if (sumOfElements >= 0) {
+         System.out.println("Сумма элементов массива неотрицательна");
       } else {
-         System.out.println("Cумма элементов массива отрицательна");
+         System.out.println("Сумма элементов массива отрицательна");
       }
    }
 
@@ -1054,9 +1054,8 @@ public class Main {
 
       for (int i = 1; i < array.length; i++) {
          if (array[i] != 0 && array[i] % 2 == 0 && i % 2 == 1) {
-            int n = i;
             int currentLength = array.length;
-            for (int j = n; j < array.length - 1; j++) {
+            for (int j = i; j < array.length - 1; j++) {
                array[j] = array[j + 1];
             }
             currentLength--;
