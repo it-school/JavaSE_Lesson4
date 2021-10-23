@@ -6,7 +6,657 @@ public class Main {
    private static final Scanner scanner = new Scanner(System.in);
    private static final Random r = new Random();
 
-   public static void task1() {
+   public static void main(String[] args) {
+      ArraysExample_1();
+      ArraysExample_2();
+      ArraysExample_3();
+      ArraysExample_4();
+      ArraysExample_5();
+      ArraysExample_6();
+      ArraysExample_7();
+
+      maxElementInArray();
+      minElementInArray();
+      findAverageValue();
+
+      BubbleSortFromMaxToMin();
+      BubbleSortFromMinToMax();
+      QuickSortUseExample();
+
+      ArraysCompareBikeMethod();
+      ArraysCompareNormalMethod();
+
+      ArrayClone();
+      ArrayToString();
+      ArrayReverse();
+
+      ForToForeach();
+      SaveOurRAM();
+
+      // Задания для работы в аудитории
+      int[] arr = new int[11];
+      FillArrayRandomly(arr);
+      ReverseArray(arr);
+      SearchInArray(arr);
+
+      ClassWork1();
+      ClassWork2();
+      ClassWork3(arr);
+      ClassWork4(arr);
+      ClassWork5();
+      ClassWork6();
+      ClassWork7();
+      ClassWork7a();  // С использованием сортировки и выбором 3 крайних значений
+      ClassWork8();
+
+      // Домашние задания
+      Homework_Example_1();
+      Homework_Example_2();
+      Homework_Example_9();
+   }
+
+   /**
+    * Одномерные массивы. Пример 1
+    */
+   private static void ArraysExample_1() {
+      // Счёт элементов массива всегда начинается с 0
+
+      System.out.println("\nОдномерные массивы. Пример 1");
+
+      int[] array = new int[5];
+
+      array[0] = 10;
+      array[1] = 20;
+      array[2] = 30;
+      array[3] = 40;
+      array[4] = 50;
+
+      System.out.print("Массив array : ");
+      System.out.print(array[0] + " ");
+      System.out.print(array[1] + " ");
+      System.out.print(array[2] + " ");
+      System.out.print(array[3] + " ");
+      System.out.print(array[4] + " ");
+   }
+
+   /**
+    * Одномерные массивы. Пример 2: заполнение массива случайными значениями
+    */
+   private static void ArraysExample_2() {
+      System.out.println("\nОдномерные массивы. Пример 2");
+
+      int[] array = new int[5];
+
+      Random rnd = new Random();
+      // Заполнение массива.
+      for (int i = 0; i < array.length; i++) {
+         array[i] = rnd.nextInt(50);
+      }
+
+      System.out.print("Массив array: ");
+
+      // Вывод на экран значений элементов массива.
+      for (int i = 0; i < array.length; i++) {
+         System.out.print(array[i] + "  ");
+      }
+
+      System.out.println();
+      System.out.println(Arrays.toString(array));
+   }
+
+   /**
+    * Одномерные массивы. Пример 3
+    */
+   private static void ArraysExample_3() {
+      System.out.println("\nОдномерные массивы. Пример 3");
+
+      int[] array = new int[]{1, 2, 3, 4, 5};
+
+      System.out.print("Массив array : ");
+
+      // Вывод на экран значений элементов массива.
+      for (int i = 0; i < array.length; i++) {
+         System.out.print(array[i] + "  ");
+      }
+   }
+
+   /**
+    * Одномерные массивы. Пример 4
+    */
+   private static void ArraysExample_4() {
+      System.out.println("\nОдномерные массивы. Пример 4");
+
+      int[] array = {1, 2, 3, 4, 5};
+
+      System.out.print("Массив array : ");
+
+      // Вывод на экран значений элементов массива.
+      for (int i = 0; i < array.length; i++) {
+         System.out.print(array[i] + "  ");
+      }
+   }
+
+   /**
+    * Одномерные массивы. Пример 5
+    */
+   private static void ArraysExample_5() {
+      System.out.println("\nОдномерные массивы. Пример 5");
+
+      int[] array = new int[5];
+
+      System.out.print("Массив array : ");
+
+      // Вывод на экран значений элементов массива.
+      for (int i = 0; i < array.length; i++) {
+         System.out.print(array[i] + "  ");
+      }
+   }
+
+   /**
+    * Одномерные массивы. Пример 6
+    */
+   private static void ArraysExample_6() {
+      System.out.println("\nОдномерные массивы. Пример 6");
+
+      int[] vector = new int[1];
+      vector[0] = 100;
+      int value = vector[0];
+
+      System.out.println("Массив vector : " + vector[0]);
+      System.out.println("Переменная : " + value);
+   }
+
+   /**
+    * Одномерные массивы. Пример 7
+    */
+   private static void ArraysExample_7() {
+      final int N = 10;
+      float[] A = new float[N];
+
+      Locale.setDefault(Locale.US);
+      for (int i = 0; i < N; i++) {
+         System.out.print(String.format("%7.2f", (A[i] = (float) (Math.random() * 100))));
+      }
+
+      System.out.println();
+      System.out.println(Arrays.toString(A));
+
+      for (float element : A) {
+         System.out.print(String.format("%7.2f", element));
+      }
+
+      // Быстрая сортировка массива по возрастанию
+      Arrays.sort(A);
+
+      // Переворот элементов массива
+      float temp = 0;
+      for (int i = 0; i < A.length / 2; i++) {
+         temp = A[i];
+         A[i] = A[A.length - 1 - i];
+         A[A.length - 1 - i] = temp;
+      }
+      System.out.println(Arrays.toString(A));
+
+      int[] B = new int[N * N * N * N * N * N * N * N];
+      for (int i = 0; i < B.length; i++) {
+         B[i] = (int) (5 + Math.random() * 100000);
+      }
+
+      // System.out.println(Arrays.toString(B));
+      System.out.println();
+      int n = 0;
+      // Линейный поиск значения в массиве
+      for (int i = 0; i < B.length; i++) {
+         if (B[i] == 555) {
+            System.out.println("Linear search of 555: " + i);
+            n++;
+            // break;
+         }
+      }
+
+      // Линейный поиск значения в массиве в обратном порядке
+      for (int i = B.length - 1; i > 0; i--) {
+         if (B[i] == 555) {
+            System.out.println("Linear search of 555: " + i);
+            n++;
+            break;
+         }
+      }
+
+      System.out.println(n);
+      Arrays.sort(B);
+      // Бинарный поиск вхождения значения в массив
+      System.out.println("Binary search of 555: " + Arrays.binarySearch(B, 555));
+
+
+      // Для всех элементов
+      n = 0;
+      for (int i = 0; i < A.length - 1; i++) {
+         for (int j = (A.length - 1); j > i; j--) // для всех элементов после i-ого
+         {
+            if (A[j - 1] > A[j]) // если текущий элемент меньше предыдущего
+            {
+               temp = A[j - 1]; // меняем их местами
+               A[j - 1] = A[j];
+               A[j] = temp;
+            }
+            n++;
+         }
+      }
+      System.out.println(Arrays.toString(A));
+      System.out.println(n);
+
+      // Поиск минимального значения массива
+      int[] C = B.clone();
+      int indexMin = 0;
+      for (int i = 1; i < C.length; i++) {
+         if (C[i] <= C[indexMin]) {
+            indexMin = i;
+            break;
+         }
+
+      }
+      System.out.println("Minimum value: " + C[indexMin] + ", it's index is: " + indexMin);
+      System.out.println();
+
+
+      // Сравнение обычной сортировки и с использованием распараллеливания
+      long start = System.currentTimeMillis();
+      Arrays.sort(B);
+      System.out.println("Обычная сортировка: " + (System.currentTimeMillis() - start));
+
+      start = System.currentTimeMillis();
+      Arrays.parallelSort(C);
+      System.out.println("Сортировка с распараллеливанием: " + (System.currentTimeMillis() - start));
+
+
+      // Изменение размеров массива
+      int[] arr1 = new int[N];
+      for (int i = 0; i < arr1.length; i++) {
+         arr1[i] = (int) (Math.random() * 1000);
+      }
+      System.out.println("Initial array:                 " + Arrays.toString(arr1));
+
+      int[] arr2 = Arrays.copyOf(arr1, 5);
+      System.out.println("Subcopy of initial array:      " + Arrays.toString(arr2));
+
+      arr1 = arr2;
+      System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
+      arr2[3] = 555;
+      System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
+   }
+
+   /**
+    * Переворот элементов массива
+    *
+    * @param arr массив
+    */
+   private static void ReverseArray(int[] arr) {
+      int a = 2, b = 3;
+      System.out.println(a + ", " + b);
+      a = a + b; // 5
+      b = a - b; // 2
+      a = a - b; // 3
+
+      int c = a;
+      a = b;
+      b = c;
+
+      System.out.println(Arrays.toString(arr));
+      int temp;
+      for (int i = 0; i < arr.length / 2; i++) {
+         temp = arr[0 + i];
+         arr[0 + i] = arr[arr.length - 1 - i];
+         arr[arr.length - 1 - i] = temp;
+      }
+      System.out.println(Arrays.toString(arr));
+   }
+
+   /**
+    * @param arr
+    */
+   private static void SearchInArray(int[] arr) {
+      // Поиск вхождения с использованием линейного поиска
+      int key = 10;
+      boolean isFound = false;
+      for (int i = 0; i < arr.length; i++) {
+         if (arr[i] == key) {
+            System.out.println(i);
+            isFound = true;
+            break;
+         }
+      }
+      if (!isFound)
+         System.out.println("Not found using linear saerch");
+
+      // Поиск вхождения с использованием бинарного поиска
+      int[] arrCopy = arr.clone();
+      Arrays.sort(arrCopy);
+      int pos = Arrays.binarySearch(arrCopy, key);
+      System.out.println(pos >= 0 ? "Found" : "Not found using binary search");
+      System.out.println(Arrays.toString(arr));
+   }
+
+   private static int[] FillArrayRandomly(int[] arr) {
+      for (int i = 0; i < arr.length; i++) {
+         arr[i] = r.nextInt(20);
+      }
+      System.out.println(Arrays.toString(arr));
+      return arr;
+   }
+
+   /**
+    * Клонирование массива
+    */
+   private static void ArrayClone() {
+      System.out.println("\nКлонирование массива\n");
+
+      int[] a = {10, 20, 30};
+      System.out.println("Клонируем массив а в массив b");
+      int[] b = a.clone();
+      System.out.println("Элементы массивов a и b равны - " +
+              Arrays.equals(a, b));
+      System.out.println("Ссылка а и b указывают на один массив - " +
+              (a.hashCode() == b.hashCode()));
+
+      System.out.println("Присваиваем массиву b ссылку массива a");
+      b = a;
+      System.out.println("Элементы массивов a и b равны - " +
+              Arrays.equals(a, b));
+      System.out.println("Ссылка а и b указывают на один массив - " +
+              (a.hashCode() == b.hashCode()));
+   }
+
+   /**
+    * Преобразование элементов массива в строку
+    */
+   private static void ArrayToString() {
+
+      System.out.println("\nПреобразование элементов массива в строку");
+
+      int[] intArray = {1, 2, 3, 4, 5};
+
+      // Создаем строку и инициализируем её строковым представлением
+      // элементов массива
+      String intArrayString = Arrays.toString(intArray);
+
+      System.out.print("Массив преобразованный в строку : ");
+
+      // Выводим строку intArrayString на экран
+      System.out.println(intArrayString); // [1, 2, 3, 4, 5]
+   }
+
+   /**
+    * Минимальный элемент в массиве
+    */
+   private static void minElementInArray() {
+      System.out.println("\nНахождение минимального элемента в массиве");
+
+      int[] array = {21, 243, 415, 54, -2, 31, 98, 10, -2};
+
+      // Обязательно присваивать минимальному элементу нулевой элемент массива
+      int indexMin = 0;
+
+      System.out.print("Исходный массив : ");
+
+      for (int a : array) {
+         // Выводим элементы массива на экран
+         System.out.print(a + "  ");
+         // Сравниваем текущий миниманльный элемент с i-ым элементом массива
+      }
+
+      for (int i = 1; i < array.length; i++) {
+         if (array[i] < array[indexMin])
+            indexMin = i;
+      }
+
+      System.out.println("\nМинимальный элемент " + array[indexMin] + ", его индекс: " + indexMin);
+   }
+
+   /**
+    * Максимальный элемент в массиве
+    */
+   private static void maxElementInArray() {
+      System.out.println("\nНахождение максимального элемента в массиве");
+
+      int[] array = {21, 243, 415, 54, -2, 31, 98, 10};
+
+      // Обязательно присваивать максимальному элементу нулевой элемент массива
+      int max_element = array[0];
+
+      System.out.print("Исходный массив : ");
+
+      for (int a : array) {
+         // Выводим элементы массива на экран
+         System.out.print(a + "  ");
+         // Сравниваем текущий максимальный элемент с i-ым элементом массива
+         if (a > max_element) {
+            max_element = a;
+         }
+      }
+      System.out.println("\nМаксимальный элемент " + max_element);
+   }
+
+   /**
+    * Среднее арифметическое в массиве
+    */
+   private static void findAverageValue() {
+      System.out.println("\nСреднее арифметическое в массиве");
+
+      int[] nums = {4, 8, 10, 12, 16};
+      double sum = 0;
+
+      System.out.print("Массив nums : ");
+
+      for (int a : nums) {
+         System.out.print(a + "  ");
+      }
+
+      for (int i = 0; i < nums.length; i++) {
+         sum += nums[i];
+      }
+
+      sum = sum / nums.length; // общий результат делим на число элементов в массиве
+      System.out.println("Среднее арифметическое: " + String.format("%5.2f", sum));
+   }
+
+   /**
+    * Перестановка элементов массива в обратном порядке
+    */
+   private static void ArrayReverse() {
+      // Данный метод идеален как вопрос на собеседовании
+      System.out.println("\nРеверс элементов массива");
+
+      int[] a = new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1};
+      for (int i = 0; i < a.length / 2; i++) {
+         a[i] = a[i] + a[a.length - 1 - i];
+         a[a.length - 1 - i] = a[i] - a[a.length - 1 - i];
+         a[i] = a[i] - a[a.length - 1 - i];
+      }
+
+      System.out.print("Массив после сортировки : ");
+      System.out.println(Arrays.toString(a));
+   }
+
+   /**
+    * "Пузырьковая" сортировка по убыванию - от большего к меньшему
+    */
+   private static void BubbleSortFromMaxToMin() {
+      System.out.println("\n\nBubbleSort - от большего к меньшему");
+      int[] num = {203, 134, 123, -2, 124, 0, 14};
+      int j = 0;
+      boolean flag = true;
+      int temp;
+
+      System.out.print("До сортировки : ");
+
+      for (int a : num) {
+         System.out.print(a + " ");
+      }
+
+      while (flag) {
+         flag = false;
+         for (j = 0; j < num.length - 1; j++) {
+            if (num[j] < num[j + 1]) {
+               temp = num[j];
+               num[j] = num[j + 1];
+               num[j + 1] = temp;
+               flag = true;
+            }
+         }
+      }
+
+      System.out.print("\nПосле сортировки : ");
+      for (int a : num) {
+         System.out.print(a + " ");
+      }
+   }
+
+   /**
+    * "Пузырьковая" сортировка по возрастанию - от меньшего к большему
+    */
+   private static void BubbleSortFromMinToMax() {
+      System.out.println("\n\nBubbleSort - от меньшего к большему");
+      int[] num = {203, 134, 123, -2, 124, 0, 14};
+      int j = 0;
+      boolean flag = true;
+      int temp;
+
+      System.out.print("До сортировки : ");
+
+      for (int a : num) {
+         System.out.print(a + " ");
+      }
+
+      while (flag) {
+         flag = false;
+         for (j = 0; j < num.length - 1; j++) {
+            if (num[j] > num[j + 1]) {
+               temp = num[j];
+               num[j] = num[j + 1];
+               num[j + 1] = temp;
+               flag = true;
+            }
+         }
+      }
+
+      System.out.print("\nПосле сортировки : ");
+      for (int a : num) {
+         System.out.print(a + " ");
+      }
+   }
+
+   /**
+    * Сортировка с использованием встроенной "быстрой сортировки" QuickSort
+    */
+   private static void QuickSortUseExample() {
+      System.out.println("\n\nСортировка методом QuickSort");
+      int[] num = {203, 134, 123, -2, 124, 0, 14};
+
+      System.out.print("Массив до сортировки : ");
+      for (int a : num) {
+         System.out.print(a + " ");
+      }
+
+      // Сортируем массив методом QuickSort
+      Arrays.sort(num);
+
+      System.out.print("\nМассив после сортировки : ");
+      for (int a : num) {
+         System.out.print(a + " ");
+      }
+   }
+
+   /**
+    * Сравнение элементов массивов с помощью "изобретения велосипеда"
+    */
+   private static void ArraysCompareBikeMethod() {
+      System.out.println("\nСравнение элементов массивов путём изобретения велосипеда");
+
+      int[] a = {10, 20, 30};
+      int[] b = {10, 20, 30};
+      boolean flag = a.length == b.length;
+
+      if (flag == true) {
+         for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) {
+               flag = false;
+               break;
+            }
+         }
+      }
+      if (flag) {
+         System.out.println("Элементы массивов a и b - равны");
+      } else {
+         System.out.println("Элементы массивов a и b - не равны");
+      }
+   }
+
+   /**
+    * Нормальное сравнение элементов массивов, используя встроенный метод класса Arrays
+    */
+   private static void ArraysCompareNormalMethod() {
+      System.out.println("\nСравнение элементов массивов с помощью Arrays.equals");
+      int[] a = {10, 20, 30};
+      int[] b = {10, 20, 30};
+
+      if (Arrays.equals(a, b)) {
+         System.out.println("Элементы массивов a и b - равны");
+      } else {
+         System.out.println("Элементы массивов a и b - не равны");
+      }
+   }
+
+   /**
+    * Переход от for к foreach
+    */
+   private static void ForToForeach() {
+      System.out.println("\nПереход от for к foreach");
+
+      int[] array = {10, 20, 30};
+
+      System.out.print("Массив : ");
+
+      for (int i = 0; i < array.length; i++) {
+         // Присваиваем переменной a значение i-го элемента массива array
+         int a = array[i];
+         // Выводим переменную а, которая равна i-ому элементу массива array
+         System.out.print(a + "  ");
+         // Изменяем значение переменной а, а значение i-го элемента массива array не изменяется
+         a = 20;
+      }
+
+      System.out.print("\nМассив : ");
+
+      // Тоже самое, что и выше
+      for (int a : array) {
+         System.out.print(a + "  ");
+         a = 20;
+      }
+   }
+
+   /**
+    * Оптимизируем использование оперативной памяти
+    */
+   private static void SaveOurRAM() {
+      // Динамический диапазон элементов для всех массивов от 0 до 100
+      // В таком случае, оптимально будет выбрать массив типа byte
+      // чтобы не расходовать оперативную память впустую
+
+      final int N = 10000;
+
+      byte[] a_byte = new byte[N];    // Займет в памяти 10000 байт
+      short[] a_short = new short[N]; // Займет в памяти 20000 байт
+      int[] a_int = new int[N];       // Займет в памяти 40000 байт
+      long[] a_long = new long[N];    // Займет в памяти 80000 байт
+   }
+
+   /**
+    * У вас есть доллары. Вы хотите обменять их на гривны. Есть информация о
+    * стоимости купли-продажи в банках города. В городе N банков. Составьте
+    * программу, определяющую, какой банк выбрать, чтобы выгодно обменять доллары на гривны.
+    */
+   private static void ClassWork1() {
       Random random = new Random();
       final int N = 20;
       double[] buy = new double[N], sell = new double[N];
@@ -39,10 +689,13 @@ public class Main {
       System.out.println();
       System.out.println("The best exchange rate to buy: " + String.format("%6.2f", buy[indexMax]));
       System.out.println("The best exchange rate to sell: " + String.format("%6.2f", sell[indexMin]));
-
    }
 
-   private static void task2() {
+   /**
+    * Дан целочисленный массив с количеством элементов n. Напечатать те его
+    * элементы, индексы которых являются степенями двойки (1, 2, 4, 8, 16, ...)
+    */
+   private static void ClassWork2() {
       int[] values = new int[40];
       for (int i = 0; i < values.length; i++) {
          values[i] = (int) (Math.random() * 100);
@@ -59,196 +712,13 @@ public class Main {
       for (int i = 1; i < values.length; i *= 2) {
          System.out.printf("%3d,", values[i]);
       }
-
    }
 
-   public static void main(String[] args) {
-      // task1();
-      task2();
-      /*
-      final int N = 10;
-      Random rnd = new Random();
-      int[] array1 = new int[N], array2 = new int[N];
-      for (int i = 0; i < array1.length; i++) {
-         array1[i] = r.nextInt(100);
-        // array2[i] = array1[i];
-         array2[i] = r.nextInt(100);
-      }
-
-      System.out.println(Arrays.toString(array1));
-      System.out.println(Arrays.toString(array2));
-      System.out.println(array1.hashCode());
-      System.out.println(array2.hashCode());
-
-      System.out.println(array1.equals(array2));
-      System.out.println(Arrays.equals(array1, array2));
-
-
-      System.out.println();
-      array1 = array2;
-      System.out.println(array1.equals(array2));
-      System.out.println(Arrays.equals(array1, array2));
-
-      int indexMin = 0;
-      for (int i = 1; i < array1.length; i++) {
-         if (array1[i] < array1[indexMin]) {
-            indexMin = i;
-         }
-      }
-      System.out.println("Min:" + array1[indexMin] + ", it's index: " + indexMin);
-
-      int indexMax = 0;
-      for (int i = 1; i < array1.length; i++) {
-         if (array1[i] > array1[indexMax]) {
-            indexMax = i;
-         }
-      }
-      System.out.println("Max:" + array1[indexMax] + ", it's index: " + indexMax);
-      */
-/*
-      int indexMin = 0, indexMax = 0;
-      for (int i = 1; i < array1.length; i++) {
-         if (array1[i] < array1[indexMin]) {
-            indexMin = i;
-         } else
-         if (array1[i] > array1[indexMax]) {
-            indexMax = i;
-         }
-      }
-      System.out.println("Min:" + array1[indexMin] + ", it's index: " + indexMin);
-      System.out.println("Max:" + array1[indexMax] + ", it's index: " + indexMax);
- */
-
-//        ArraysExample_1();
-//        ArraysExample_2();
-//        ArraysExample_3();
-//        ArraysExample_4();
-//        ArraysExample_5();
-//        ArraysExample_6();
-//        ArraysExample_7();
-
-//        RandomArray();
-
-//        MaxElementInArray();
-//        MinElementInArray();
-//        Average();
-//
-//        BubbleSortForMaxToMin();
-//        BubbleSortForMinToMax();
-//        QuickSort();
-
-//
-//        ArraysCompareBikeMethod();
-//        ArraysCompareNormalMethod();
-//
-//        ArrayClone();
-//        ArrayToString();
-//        ArrayReverse();
-//
-//        ForToForeach();
-//        SaveOurRAM();
-
-//       Задания для работы в аудитории
-//      int[] arr = new int[11];
-//      FillArrayRandomly(arr);
-//      ReverseArray(arr);
-//        SearchInArray(arr);
-
-//      Task5();
-
-//
-//        ClassWork3(arr);
-//        ClassWork4(arr);
-//        ClassWork5();
-//        ClassWork6();
-//        ClassWork7();
-//        ClassWork7a();  // С использованием сортировки и выбором 3 крайних значений
-//        ClassWork8();
-
-      // Домашние задания
-//      Homework_Example_1();
-//      Homework_Example_2();
-//      Homework_Example_9();
-   }
-
-   private static void ReverseArray(int[] arr) {
-      int a = 2, b = 3;
-      System.out.println(a + ", " + b);
-      a = a + b; // 5
-      b = a - b; // 2
-      a = a - b; // 3
-
-      int c = a;
-      a = b;
-      b = c;
-
-      System.out.println(Arrays.toString(arr));
-      int temp;
-      for (int i = 0; i < arr.length / 2; i++) {
-         temp = arr[0 + i];
-         arr[0 + i] = arr[arr.length - 1 - i];
-         arr[arr.length - 1 - i] = temp;
-      }
-      System.out.println(Arrays.toString(arr));
-
-   }
-
-   private static void Task5() {
-/*        Каждый солнечный день улитка, сидящая на дереве, поднимается вверх на
-        2 см, а каждый пасмурный день опускается вниз на 1 см. В начале
-        наблюдения улитка находилась на расстоянии А см от земли на 5-метровом
-        дереве. Имеется 30-элементный массив, содержащий сведения о том, был
-        ли соответствующий день наблюдения пасмурным или солнечным.
-                Написать программу, определяющую местоположение улитки к концу 30-
-                го дня наблюдения.*/
-      final int DAYS = 30;
-      boolean[] isSunnyDay = new boolean[DAYS];
-      for (int i = 0; i < Math.random() * DAYS; i++) {
-         isSunnyDay[(int) (Math.random() * DAYS)] = true;
-      }
-//Arrays.fill(isSunnyDay,true);
-
-      System.out.println(Arrays.toString(isSunnyDay));
-      final int A = 200;
-      int wayLength = 0 + A;
-
-      for (int i = 0; i < isSunnyDay.length; i++) {
-         wayLength += isSunnyDay[i] ? 2 : -1;
-      }
-
-      System.out.println("Total height: " + (wayLength >= 0 ? wayLength : 0) + " cm");
-   }
-
-   private static void SearchInArray(int[] arr) {
-      int key = 10;
-      boolean isFound = false;
-      for (int i = 0; i < arr.length; i++) {
-         if (arr[i] == key) {
-            System.out.println(i);
-            isFound = true;
-            break;
-         }
-      }
-      if (!isFound)
-         System.out.println("Not found using linear saerch");
-
-
-      int[] arrCopy = arr.clone();
-      Arrays.sort(arrCopy);
-      int pos = Arrays.binarySearch(arrCopy, key);
-      System.out.println(pos >= 0 ? "Found" : "Not found using binary search");
-      System.out.println(Arrays.toString(arr));
-
-   }
-
-   private static int[] FillArrayRandomly(int[] arr) {
-      for (int i = 0; i < arr.length; i++) {
-         arr[i] = r.nextInt(20);
-      }
-      System.out.println(Arrays.toString(arr));
-      return arr;
-   }
-
+   /**
+    * Найти сумму четных элементов массива целых чисел
+    *
+    * @param arr
+    */
    private static void ClassWork3(int[] arr) {
       int sum = 0;
       for (int item : arr) {
@@ -260,6 +730,11 @@ public class Main {
       System.out.println();
    }
 
+   /**
+    * Найти произведение элементов массива целых чисел, которые кратны 9
+    *
+    * @param arr
+    */
    private static void ClassWork4(int[] arr) {
       int mult = 1;
       for (int i = 0; i < arr.length; i++) {
@@ -271,6 +746,12 @@ public class Main {
       System.out.println("Произведение всех элементов массива со значениями, кратными 9: " + mult);
    }
 
+   /**
+    * Каждый солнечный день улитка, сидящая на дереве, поднимается на 2 см, а каждый пасмурный день опускается вниз на 1 см.
+    * В начале наблюдения улитка находилась на расстоянии А см от земли на 5-метровом дереве.
+    * Имеется 30-элементный массив, содержащий сведения о том, был ли соответствующий день наблюдения пасмурным или солнечным.
+    * Написать программу, определяющую местоположение улитки к концу 30-го дня наблюдения.
+    */
    private static void ClassWork5() {
       final int DAYS = 365, A = 100, L = 500;
       int[] weather = new int[DAYS];
@@ -291,27 +772,17 @@ public class Main {
 
       System.out.println("Улитка начала с точки: " + A + " см");
       System.out.println("Закончила на высоте:   " + current + " см");
-
-		/*
-		// Определить победителя в кубики из N игроков
-		Random random = new Random();
-		int dices1, dices2;
-		final int N = 10;
-		int[] dices = new int[N];
-		int max = 0;
-		for (int i = 0; i < N; i++) {
-			dices1 = 1 + random.nextInt(6);
-			dices2 = 1 + random.nextInt(6);
-			System.out.println(dices1 + " : " + dices2);
-			dices[i] = dices1 + dices2;
-			if (dices[i] > max) { max = dices[i]; }
-		}
-		for (int i = 0; i < N; i++) {
-			if (dices[i] == max) { System.out.println("Winner is:" + i); }
-		}
-		*/
    }
 
+   /**
+    * Руководство фирмы ведет по месяцам учет расходов и поступлений средств.
+    * За n месяцев получены два массива: R(n) — расходов и P(n) — поступлений.
+    * Сформировать из массивов R(n) и P(n) массив прибыли Z(n).
+    * Определить:
+    * общую прибыль (как за весь период, так и по месяцам она может быть отрицательная),
+    * месяц с максимальной и месяц с минимальной прибылью,
+    * количество месяцев с положительной прибылью.
+    */
    private static void ClassWork6() {
       final int N = 12, INCOME_RANGE = 100_000;
       double[] r = new double[N];
@@ -350,16 +821,23 @@ public class Main {
             indMax = i;
          }
       }
+
       System.out.println(System.lineSeparator() + "Прибыли: ");
       for (int i = 0; i < N; i++) {
          System.out.print(String.format("%10.2f", z[i]));
       }
       System.out.println(System.lineSeparator() + "Итоговая прибыль: " + String.format("%10.2f", all));
       System.out.println("Месяц с максимальной прибылью: " + (indMax + 1));
-      System.out.println("Месяц с миниммальной прибылью: " + (indMin + 1));
+      System.out.println("Месяц с минимальной прибылью: " + (indMin + 1));
       System.out.println("Месяцев с прибылью: " + positiveMonths);
    }
 
+   /**
+    * На соревнованиях по прыжкам в высоту и в длину получены два массива результатов H(n) и D(n).
+    * Определить три лучших и три худших результата в каждом виде соревнований.
+    * <p>
+    * Способ с поиском без использования сортировки
+    */
    private static void ClassWork7() {
       System.out.println();
       final int N = 15, MAXD = 7, MAXL = 3;
@@ -427,9 +905,14 @@ public class Main {
          }
       }
       System.out.println("3 Худший в длину: " + String.format("%6.2f", worstD3));
-
    }
 
+   /**
+    * На соревнованиях по прыжкам в высоту и в длину получены два массива результатов H(n) и D(n).
+    * Определить три лучших и три худших результата в каждом виде соревнований.
+    * <p>
+    * Способ с использованием сортировки
+    */
    private static void ClassWork7a() {
       System.out.println();
       final int N = 10;
@@ -447,6 +930,32 @@ public class Main {
       SubTask7(D, "D");
    }
 
+   /**
+    * Отображение 3 лучших и 3 худших результата (по 3 с каждой стороны после сортировки)
+    *
+    * @param arr
+    * @param arrayName
+    */
+   private static void SubTask7(float[] arr, String arrayName) {
+      float[] copyH = arr.clone();
+
+      Arrays.sort(copyH);
+
+      System.out.println("\n" + arrayName + " worst 3: ");
+      for (int i = 0; i < 3; i++) {
+         System.out.print(copyH[i] + "\t");
+      }
+
+      System.out.println("\n" + arrayName + " best 3: ");
+      for (int i = copyH.length - 1; i > copyH.length - 4; i--) {
+         System.out.print(copyH[i] + "\t");
+      }
+   }
+
+   /**
+    * Написать алгоритм переворота элементов массива (смены мест в заданном массиве):
+    * 1-го элемента с последним, 2-го с предпоследним и так далее.
+    */
    private static void ClassWork8() {
       System.out.println();
       final int N = 15;
@@ -468,585 +977,24 @@ public class Main {
       System.out.println(Arrays.toString(array));
    }
 
-   private static void LessonTask5() {
-      boolean[] month = new boolean[30];
-      int a = 100;
-      for (int i = 0; i < month.length; i++) {
-         month[i] = r.nextBoolean();
-      }
-
-      System.out.println(Arrays.toString(month));
-
-      for (int i = 0; i < month.length; i++) {
-         a += (month[i] == true ? 2 : -1);
-         if (a > 500) {
-            a = 500;
-         } else if (a < 0) {
-            a = 0;
-         }
-      }
-
-      System.out.println("Улитка на высоте " + a + " см");
-   }
-
-   private static void SubTask7(float[] arr, String arrayName) {
-      float[] copyH = arr.clone();
-
-      Arrays.sort(copyH);
-
-      System.out.println("\n" + arrayName + " worst 3: ");
-      for (int i = 0; i < 3; i++) {
-         System.out.print(copyH[i] + "\t");
-      }
-
-      System.out.println("\n" + arrayName + " best 3: ");
-      for (int i = copyH.length - 1; i > copyH.length - 4; i--) {
-         System.out.print(copyH[i] + "\t");
-      }
-   }
-
-   // Одномерные массивы. Пример 1
-
-   private static void ArraysExample_1() {
-      // Счёт элементов массива всегда начинается с 0
-
-      System.out.println("\nОдномерные массивы. Пример 1");
-
-      int[] array = new int[5];
-
-      array[0] = 10;
-      array[1] = 20;
-      array[2] = 30;
-      array[3] = 40;
-      array[4] = 50;
-
-      System.out.print("Массив array : ");
-      System.out.print(array[0] + " ");
-      System.out.print(array[1] + " ");
-      System.out.print(array[2] + " ");
-      System.out.print(array[3] + " ");
-      System.out.print(array[4] + " ");
-   }
-   // Одномерные массивы. Пример 2
-
-   private static void ArraysExample_2() {
-      System.out.println("\nОдномерные массивы. Пример 2");
-
-      int[] array = new int[5];
-
-      Random rnd = new Random();
-      // Заполнение массива.
-      for (int i = 0; i < array.length; i++) {
-         array[i] = rnd.nextInt(50);
-      }
-
-      System.out.print("Массив array: ");
-
-      // Вывод на экран значений элементов массива.
-      for (int i = 0; i < array.length; i++) {
-         System.out.print(array[i] + "  ");
-      }
-
-      System.out.println();
-      System.out.println(Arrays.toString(array));
-   }
-   // Одномерные массивы. Пример 3
-
-   private static void ArraysExample_3() {
-      System.out.println("\nОдномерные массивы. Пример 3");
-
-      int[] array = new int[]{1, 2, 3, 4, 5};
-
-      System.out.print("Массив array : ");
-
-      // Вывод на экран значений элементов массива.
-      for (int i = 0; i < array.length; i++) {
-         System.out.print(array[i] + "  ");
-      }
-   }
-   // Одномерные массивы. Пример 4
-
-   private static void ArraysExample_4() {
-      System.out.println("\nОдномерные массивы. Пример 4");
-
-      int[] array = {1, 2, 3, 4, 5};
-
-      System.out.print("Массив array : ");
-
-      // Вывод на экран значений элементов массива.
-      for (int i = 0; i < array.length; i++) {
-         System.out.print(array[i] + "  ");
-      }
-   }
-   // Одномерные массивы. Пример 5
-
-   private static void ArraysExample_5() {
-      System.out.println("\nОдномерные массивы. Пример 5");
-
-      int[] array = new int[5];
-
-      System.out.print("Массив array : ");
-
-      // Вывод на экран значений элементов массива.
-      for (int i = 0; i < array.length; i++) {
-         System.out.print(array[i] + "  ");
-      }
-   }
-   // Одномерные массивы. Пример 6
-
-   private static void ArraysExample_6() {
-      System.out.println("\nОдномерные массивы. Пример 6");
-
-      int[] vector = new int[1];
-      vector[0] = 100;
-      int value = vector[0];
-
-      System.out.println("Массив vector : " + vector[0]);
-      System.out.println("Переменная : " + value);
-   }
-   // Заполнение массива случайными значениями
-
-   private static void RandomArray() {
-      System.out.println("\nЗаполнение массива случайными значениями");
-
-      Random random = new Random();
-      int[] array = new int[10];
-
-      for (int i = 0; i < array.length; i++) {
-         array[i] = random.nextInt(100);
-      }
-
-      System.out.print("\nМассив со случайными элементами : ");
-
-      for (int a : array) {
-         System.out.print(a + " ");
-      }
-   }
-   // Максимальный элемент в массиве
-
-   private static void MaxElementInArray() {
-      System.out.println("\nНахождение максимального элемента в массиве");
-
-      int[] array = {21, 243, 415, 54, -2, 31, 98, 10};
-
-      // Обязательно присваивать максимальному элементу нулевой элемент массива
-      int max_element = array[0];
-
-      System.out.print("Исходный массив : ");
-
-      for (int a : array) {
-         // Выводим элементы массива на экран
-         System.out.print(a + "  ");
-         // Сравниваем текущий максимальный элемент с i-ым элементом массива
-         if (a > max_element) {
-            max_element = a;
-         }
-      }
-      System.out.println("\nМаксимальный элемент " + max_element);
-   }
-   // Минимальный элемент в массиве
-
-   private static void MinElementInArray() {
-      System.out.println("\nНахождение минимального элемента в массиве");
-
-      int[] array = {21, 243, 415, 54, -2, 31, 98, 10, -2};
-
-      // Обязательно присваивать минимальному элементу нулевой элемент массива
-      int indexMin = 0;
-
-      System.out.print("Исходный массив : ");
-
-      for (int a : array) {
-         // Выводим элементы массива на экран
-         System.out.print(a + "  ");
-         // Сравниваем текущий миниманльный элемент с i-ым элементом массива
-      }
-
-      for (int i = 1; i < array.length; i++) {
-         if (array[i] < array[indexMin])
-            indexMin = i;
-      }
-
-      System.out.println("\nМинимальный элемент " + array[indexMin] + ", его индекс: " + indexMin);
-   }
-   // Среднее арифметическое в массиве
-
-   private static void Average() {
-      System.out.println("\nСреднее арифметическое в массиве");
-
-      int[] nums = {4, 8, 10, 12, 16};
-      double sum = 0;
-
-      System.out.print("Массив nums : ");
-
-      for (int a : nums) {
-         System.out.print(a + "  ");
-      }
-
-      for (int i = 0; i < nums.length; i++) {
-         sum += nums[i];
-      }
-
-      sum = sum / nums.length; // общий результат делим на число элементов в массиве
-      System.out.println("Среднее арифметическое: " + String.format("%5.2f", sum));
-   }
-   // Сортировка пузырьком - от большего к меньшему
-
-   private static void BubbleSortForMaxToMin() {
-      System.out.println("\n\nBubbleSort - от большего к меньшему");
-      int[] num = {203, 134, 123, -2, 124, 0, 14};
-      int j = 0;
-      boolean flag = true;
-      int temp;
-
-      System.out.print("До сортировки : ");
-
-      for (int a : num) {
-         System.out.print(a + " ");
-      }
-
-      while (flag) {
-         flag = false;
-         for (j = 0; j < num.length - 1; j++) {
-            if (num[j] < num[j + 1]) {
-               temp = num[j];
-               num[j] = num[j + 1];
-               num[j + 1] = temp;
-               flag = true;
-            }
-         }
-      }
-
-      System.out.print("\nПосле сортировки : ");
-      for (int a : num) {
-         System.out.print(a + " ");
-      }
-   }
-   // Сортировка пузырьком - от меньшего к большему
-
-   private static void BubbleSortForMinToMax() {
-      System.out.println("\n\nBubbleSort - от меньшего к большему");
-      int[] num = {203, 134, 123, -2, 124, 0, 14};
-      int j = 0;
-      boolean flag = true;
-      int temp;
-
-      System.out.print("До сортировки : ");
-
-      for (int a : num) {
-         System.out.print(a + " ");
-      }
-
-      while (flag) {
-         flag = false;
-         for (j = 0; j < num.length - 1; j++) {
-            if (num[j] > num[j + 1]) {
-               temp = num[j];
-               num[j] = num[j + 1];
-               num[j + 1] = temp;
-               flag = true;
-            }
-         }
-      }
-
-      System.out.print("\nПосле сортировки : ");
-      for (int a : num) {
-         System.out.print(a + " ");
-      }
-   }
-   // Сортировка QuickSort
-
-   private static void QuickSort() {
-      System.out.println("\n\nСортировка методом QuickSort");
-      int[] num = {203, 134, 123, -2, 124, 0, 14};
-
-      System.out.print("Массив до сортировки : ");
-      for (int a : num) {
-         System.out.print(a + " ");
-      }
-
-      // Сортируем массив метод QuickSort
-      Arrays.sort(num);
-
-      System.out.print("\nМассив после сортировки : ");
-      for (int a : num) {
-         System.out.print(a + " ");
-      }
-   }
-   // Сравнение элементов массивов с помощью велосипеда
-
-   private static void ArraysCompareBikeMethod() {
-      System.out.println("\nСравнение элементов массивов путём изобретения велосипеда");
-
-      int[] a = {10, 20, 30};
-      int[] b = {10, 20, 30};
-      boolean flag = a.length == b.length;
-
-      if (flag == true) {
-         for (int i = 0; i < a.length; i++) {
-            if (a[i] != b[i]) {
-               flag = false;
-               break;
-            }
-         }
-      }
-      if (flag) {
-         System.out.println("Элементы массивов a и b - равны");
-      } else {
-         System.out.println("Элементы массивов a и b - не равны");
-      }
-   }
-   // Нормальное сравнение элементов массивов
-
-   private static void ArraysCompareNormalMethod() {
-      System.out.println("\nСравнение элементов массивов с помощью Arrays.equals");
-      int[] a = {10, 20, 30};
-      int[] b = {10, 20, 30};
-
-      if (Arrays.equals(a, b)) {
-         System.out.println("Элементы массивов a и b - равны");
-      } else {
-         System.out.println("Элементы массивов a и b - не равны");
-      }
-   }
-   // Клонирование массива
-
-   private static void ArrayClone() {
-      System.out.println("\nКлонирование массива\n");
-
-      int[] a = {10, 20, 30};
-      System.out.println("Клонируем массив а в массив b");
-      int[] b = a.clone();
-      System.out.println("Элементы массивов a и b равны - " +
-              Arrays.equals(a, b));
-      System.out.println("Ссылка а и b указывают на один массив - " +
-              (a.hashCode() == b.hashCode()));
-
-      System.out.println("Присваиваем массиву b ссылку массива a");
-      b = a;
-      System.out.println("Элементы массивов a и b равны - " +
-              Arrays.equals(a, b));
-      System.out.println("Ссылка а и b указывают на один массив - " +
-              (a.hashCode() == b.hashCode()));
-   }
-   // Преобразование элементов массива в строку
-
-   private static void ArrayToString() {
-
-      System.out.println("\nПреобразование элементов массива в строку");
-
-      int[] intArray = {1, 2, 3, 4, 5};
-
-      // Создаем строку и инициализируем её строковым представлением
-      // элементов массива
-      String intArrayString = Arrays.toString(intArray);
-
-      System.out.print("Массив преобразованный в строку : ");
-
-      // Выводим строку intArrayString на экран
-      System.out.println(intArrayString); // [1, 2, 3, 4, 5]
-   }
-   // Реверс элементов массива
-
-   private static void ArrayReverse() {
-      // Данные метод идеален для собеседования
-
-      System.out.println("\nРеверс элементов массива");
-
-      int[] a = new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1};
-      for (int i = 0; i < a.length / 2; i++) {
-         a[i] = a[i] + a[a.length - 1 - i];
-         a[a.length - 1 - i] = a[i] - a[a.length - 1 - i];
-         a[i] = a[i] - a[a.length - 1 - i];
-      }
-
-      System.out.print("Массив после сортировки : ");
-      System.out.println(Arrays.toString(a));
-   }
-   // Переход от for к foreach
-
-   private static void ForToForeach() {
-      System.out.println("\nПереход от for к foreach");
-
-      int[] array = {10, 20, 30};
-
-      System.out.print("Массив : ");
-
-      for (int i = 0; i < array.length; i++) {
-         // Присваиваем переменной a значение i-го элемента массива array
-         int a = array[i];
-         // Выводим переменную а, которая равна i-ому элементу массива array
-         System.out.print(a + "  ");
-         // Изменяем значение переменной а, а значение i-го элемента массива array не изменяется
-         a = 20;
-      }
-
-      System.out.print("\nМассив : ");
-
-      // Тоже самое, что и выше
-      for (int a : array) {
-         System.out.print(a + "  ");
-         a = 20;
-      }
-   }
-   // Оптимизируем выделение оперативной памяти
-
-   private static void SaveOurRAM() {
-      // Динамический диапазон элементов для всех массивов от 0 до 100
-      // В таком случает, оптимально будет выбрать массив типа byte
-      // чтобы не тратить оперативную память
-
-      final int N = 10000;
-
-      byte[] a_byte = new byte[N];    // Займет в памяти 10000 байтов
-      short[] a_short = new short[N]; // Займет в памяти 20000 байтов
-      int[] a_int = new int[N];       // Займет в памяти 40000 байтов
-      long[] a_long = new long[N];    // Займет в памяти 80000 байтов
-   }
-
-   private static void ArraysExample_7() {
-      final int N = 10;
-      float[] A = new float[N];
-
-      Locale.setDefault(Locale.US);
-      for (int i = 0; i < N; i++) {
-         System.out.print(String.format("%7.2f", (A[i] = (float) (Math.random() * 100))));
-      }
-
-      System.out.println();
-      System.out.println(Arrays.toString(A));
-
-      for (float element : A) {
-         System.out.print(String.format("%7.2f", element));
-      }
-
-
-      // Быстрая сортировка массива по возрастанию
-      Arrays.sort(A);
-
-      // Переворот элементов массива
-      float temp = 0;
-      for (int i = 0; i < A.length / 2; i++) {
-         temp = A[i];
-         A[i] = A[A.length - 1 - i];
-         A[A.length - 1 - i] = temp;
-      }
-      System.out.println(Arrays.toString(A));
-
-
-      int[] B = new int[N * N * N * N * N * N * N * N];
-      for (int i = 0; i < B.length; i++) {
-         B[i] = (int) (5 + Math.random() * 100000);
-      }
-      // System.out.println(Arrays.toString(B));
-/*
-		System.out.println();
-		int n = 0;
-		// Линейный поиск значения в массиве
-		for (int i = 0; i < B.length; i++) {
-			if (B[i] == 555) {
-				System.out.println("Linear search of 555: " + i);
-				n++;
-				// break;
-			}
-		}
-
-		// Линейный поиск значения в массиве в обратном порядке
-		for (int i = B.length-1; i > 0; i--) {
-			if (B[i] == 555) {
-				System.out.println("Linear search of 555: " + i);
-				n++;
-				break;
-			}
-		}
-
-		System.out.println(n);
-Arrays.sort(B);
-		// Бинарный поиск вхождения значения в массив
-		System.out.println("Binary search of 555: " + Arrays.binarySearch(B, 555));
-
-
-
-		// Для всех элементов
-		int n = 0;
-		for (int i = 0; i < A.length - 1; i++)
-		{
-			for (int j = (A.length - 1); j > i; j--) // для всех элементов после i-ого
-			{
-				if (A[j - 1] > A[j]) // если текущий элемент меньше предыдущего
-				{
-					temp = A[j - 1]; // меняем их местами
-					A[j - 1] = A[j];
-					A[j] = temp;
-				}
-				n++;
-			}
-		}
-		System.out.println(Arrays.toString(A));
-		System.out.println(n);
- */
-
-      // Поиск минимального значения массива
-      int[] C = B.clone();
-      int indexMin = 0;
-      for (int i = 1; i < C.length; i++) {
-         if (C[i] <= C[indexMin]) {
-            indexMin = i;
-            break;
-         }
-
-      }
-      System.out.println("Minimum value: " + C[indexMin] + ", it's index is: " + indexMin);
-      System.out.println();
-
-
-      // Сравнение обычной сортировки и с использованием распараллеливания
-      long start = System.currentTimeMillis();
-      Arrays.sort(B);
-      System.out.println("Обычная сортировка: " + (System.currentTimeMillis() - start));
-
-      start = System.currentTimeMillis();
-      Arrays.parallelSort(C);
-      System.out.println("Сортировка с распараллеливанием: " + (System.currentTimeMillis() - start));
-
-
-      // Изменение размеров массива
-      int[] arr1 = new int[N];
-      for (int i = 0; i < arr1.length; i++) {
-         arr1[i] = (int) (Math.random() * 1000);
-      }
-      System.out.println("Initial array:                 " + Arrays.toString(arr1));
-
-      int[] arr2 = Arrays.copyOf(arr1, 5);
-      System.out.println("Subcopy of initial array:      " + Arrays.toString(arr2));
-
-      arr1 = arr2;
-      System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
-      arr2[3] = 555;
-      System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
-
-
-   }
-
-   // Типовая задача из домашнего задания. Пример 1
+   /**
+    * Типовая задача из домашнего задания. Пример 1
+    * В массиве хранятся сведения о стоимости 12 различных предметов.
+    * Определить общую стоимость всех предметов.
+    */
    private static void Homework_Example_1() {
-      // В массиве хранятся сведения о стоимости 12 различных предметов.
-      // Определить общую стоимость всех предметов.
-
       System.out.println("\nТиповая задача из домашнего задания. Пример 1");
 
       double[] cost = new double[12];
       double sum = 0;
 
-      // Так как мы изменяем значения элементов массива
-      // то используем for
+      // Так как мы изменяем значения элементов массива, то используем for
       for (int i = 0; i < cost.length; i++) {
          System.out.print("Введите стоимость " + (i + 1) + " товара : ");
          cost[i] = scanner.nextDouble();
       }
 
-      // Так как мы не изменяем значения элементов массива
-      // а только читаем их, то используем foreach
+      // Так как мы не изменяем значения элементов массива, а только читаем их, то используем foreach
       for (double a : cost) {
          sum += a;
       }
@@ -1054,14 +1002,14 @@ Arrays.sort(B);
       System.out.println("Стоимость всех 12 товаров : " + sum + " у.е.");
    }
 
-   // Типовая задача из домашнего задания. Пример 2
-
+   /**
+    * Типовая задача из домашнего задания. Пример 2
+    * Дан массив целых чисел. Выяснить:
+    * а) верно ли, что сумма элементов массива есть четное число;
+    * б) верно ли, что сумма квадратов элементов массива есть пятизначное число;
+    * в) верно ли, что сумма элементов массива неотрицательна.
+    */
    private static void Homework_Example_2() {
-      //Дан массив целых чисел. Выяснить:
-      // а) верно ли, что сумма элементов массива есть четное число;
-      // б) верно ли, что сумма квадратов элементов массива есть пятизначное число;
-      // в) верно ли, что сумма элементов массива неотрицательна.
-
       System.out.println("\nТиповая задача из домашнего задания. Пример 2");
 
       // Переменная для генерации случайных чисел
@@ -1106,12 +1054,13 @@ Arrays.sort(B);
       }
    }
 
+   /**
+    * Типовая задача из домашнего задания. Пример 9
+    * Дан массив целых чисел. Удалить из него:
+    * а) все четные элементы, стоящие на нечетных местах;
+    * б) все элементы, кратные 3 или 5.
+    */
    private static void Homework_Example_9() {
-   /*
-      Дан массив целых чисел. Удалить из него:
-      а) все четные элементы, стоящие на нечетных местах;
-      б) все элементы, кратные 3 или 5.
-   */
       int[] array = new int[12];
       for (int i = 0; i < array.length; i++) {
          array[i] = (int) (Math.random() * 10);
@@ -1133,7 +1082,5 @@ Arrays.sort(B);
       }
 
       System.out.println(Arrays.toString(array));
-
-
    }
 }
