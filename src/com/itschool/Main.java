@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
    private static final Scanner scanner = new Scanner(System.in);
-   private static final Random r = new Random();
+   private static final Random random = new Random();
 
    public static void main(String[] args) {
       arraysExample1();
@@ -292,7 +292,7 @@ public class Main {
 
    private static void fillArrayRandomly(int[] arr) {
       for (int i = 0; i < arr.length; i++) {
-         arr[i] = r.nextInt(20);
+         arr[i] = random.nextInt(20);
       }
       System.out.println(Arrays.toString(arr));
    }
@@ -645,8 +645,8 @@ public class Main {
       final int N = 20;
       double[] buy = new double[N], sell = new double[N];
       for (int i = 0; i < N; i++) {
-         buy[i] = 26 + r.nextDouble() * 0.4;
-         sell[i] = 26.2 + r.nextDouble() * 0.5;
+         buy[i] = 26 + random.nextDouble() * 0.4;
+         sell[i] = 26.2 + random.nextDouble() * 0.5;
       }
 
       for (int i = 1; i <= N; i++) {
@@ -903,8 +903,8 @@ public class Main {
       float[] H = new float[N], D = new float[N];
 
       for (int i = 0; i < N; i++) {
-         H[i] = (float) (r.nextInt(100) / 10.0);
-         D[i] = (float) (r.nextInt(100) / 10.0);
+         H[i] = (float) (random.nextInt(100) / 10.0);
+         D[i] = (float) (random.nextInt(100) / 10.0);
       }
 
       System.out.println(Arrays.toString(H));
