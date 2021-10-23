@@ -6,14 +6,126 @@ public class Main {
    private static final Scanner scanner = new Scanner(System.in);
    private static final Random r = new Random();
 
+   public static void task1() {
+      Random random = new Random();
+      final int N = 20;
+      double[] buy = new double[N], sell = new double[N];
+      for (int i = 0; i < N; i++) {
+         buy[i] = 26 + r.nextDouble() * 0.4;
+         sell[i] = 26.2 + r.nextDouble() * 0.5;
+      }
+
+      for (int i = 1; i <= N; i++) {
+         System.out.printf("%6d   ", i);
+      }
+      System.out.println();
+
+      for (int i = 0; i < N; i++) {
+         System.out.printf("%8.2f ", buy[i]);
+      }
+      System.out.println();
+      for (int i = 0; i < N; i++) {
+         System.out.printf("%8.2f ", sell[i]);
+      }
+
+      int indexMin = 0, indexMax = 0;
+      for (int i = 1; i < N; i++) {
+         if (sell[i] < sell[indexMin]) {
+            indexMin = i;
+         } else if (buy[i] > buy[indexMax]) {
+            indexMax = i;
+         }
+      }
+      System.out.println();
+      System.out.println("The best exchange rate to buy: " + String.format("%6.2f", buy[indexMax]));
+      System.out.println("The best exchange rate to sell: " + String.format("%6.2f", sell[indexMin]));
+
+   }
+
+   private static void task2() {
+      int[] values = new int[40];
+      for (int i = 0; i < values.length; i++) {
+         values[i] = (int) (Math.random() * 100);
+         System.out.printf("%3d,", values[i]);
+      }
+
+      System.out.println();
+      for (int i = 0; i < values.length; i++) {
+         if (i == 1 || i == 2 || i == 4 || i == 8 || i == 16 || i == 32)
+            System.out.printf("%3d,", values[i]);
+      }
+
+      System.out.println();
+      for (int i = 1; i < values.length; i *= 2) {
+         System.out.printf("%3d,", values[i]);
+      }
+
+   }
+
    public static void main(String[] args) {
+      // task1();
+      task2();
+      /*
+      final int N = 10;
+      Random rnd = new Random();
+      int[] array1 = new int[N], array2 = new int[N];
+      for (int i = 0; i < array1.length; i++) {
+         array1[i] = r.nextInt(100);
+        // array2[i] = array1[i];
+         array2[i] = r.nextInt(100);
+      }
+
+      System.out.println(Arrays.toString(array1));
+      System.out.println(Arrays.toString(array2));
+      System.out.println(array1.hashCode());
+      System.out.println(array2.hashCode());
+
+      System.out.println(array1.equals(array2));
+      System.out.println(Arrays.equals(array1, array2));
+
+
+      System.out.println();
+      array1 = array2;
+      System.out.println(array1.equals(array2));
+      System.out.println(Arrays.equals(array1, array2));
+
+      int indexMin = 0;
+      for (int i = 1; i < array1.length; i++) {
+         if (array1[i] < array1[indexMin]) {
+            indexMin = i;
+         }
+      }
+      System.out.println("Min:" + array1[indexMin] + ", it's index: " + indexMin);
+
+      int indexMax = 0;
+      for (int i = 1; i < array1.length; i++) {
+         if (array1[i] > array1[indexMax]) {
+            indexMax = i;
+         }
+      }
+      System.out.println("Max:" + array1[indexMax] + ", it's index: " + indexMax);
+      */
+/*
+      int indexMin = 0, indexMax = 0;
+      for (int i = 1; i < array1.length; i++) {
+         if (array1[i] < array1[indexMin]) {
+            indexMin = i;
+         } else
+         if (array1[i] > array1[indexMax]) {
+            indexMax = i;
+         }
+      }
+      System.out.println("Min:" + array1[indexMin] + ", it's index: " + indexMin);
+      System.out.println("Max:" + array1[indexMax] + ", it's index: " + indexMax);
+ */
+
 //        ArraysExample_1();
 //        ArraysExample_2();
 //        ArraysExample_3();
 //        ArraysExample_4();
 //        ArraysExample_5();
 //        ArraysExample_6();
-        ArraysExample_7();
+//        ArraysExample_7();
 
 //        RandomArray();
 
@@ -48,14 +160,14 @@ public class Main {
 //        ClassWork3(arr);
 //        ClassWork4(arr);
 //        ClassWork5();
-//      ClassWork6();
+//        ClassWork6();
 //        ClassWork7();
 //        ClassWork7a();  // С использованием сортировки и выбором 3 крайних значений
 //        ClassWork8();
 
       // Домашние задания
-//        Homework_Example_1();
-//        Homework_Example_2();
+//      Homework_Example_1();
+//      Homework_Example_2();
 //      Homework_Example_9();
    }
 
@@ -425,7 +537,7 @@ public class Main {
       Random rnd = new Random();
       // Заполнение массива.
       for (int i = 0; i < array.length; i++) {
-         array[i] = rnd.nextInt() % 50;
+         array[i] = rnd.nextInt(50);
       }
 
       System.out.print("Массив array: ");
@@ -487,8 +599,10 @@ public class Main {
 
       int[] vector = new int[1];
       vector[0] = 100;
+      int value = vector[0];
 
       System.out.println("Массив vector : " + vector[0]);
+      System.out.println("Переменная : " + value);
    }
    // Заполнение массива случайными значениями
 
