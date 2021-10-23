@@ -7,58 +7,57 @@ public class Main {
    private static final Random r = new Random();
 
    public static void main(String[] args) {
-      ArraysExample_1();
-      ArraysExample_2();
-      ArraysExample_3();
-      ArraysExample_4();
-      ArraysExample_5();
-      ArraysExample_6();
-      ArraysExample_7();
+      arraysExample1();
+      arraysExample2();
+      arraysExample3();
+      arraysExample4();
+      arraysExample5();
+      arraysExample6();
+      arraysExample7();
 
       maxElementInArray();
       minElementInArray();
       findAverageValue();
 
-      BubbleSortFromMaxToMin();
-      BubbleSortFromMinToMax();
-      QuickSortUseExample();
+      bubbleSortFromMaxToMin();
+      bubbleSortFromMinToMax();
+      quickSortUseExample();
 
-      ArraysCompareBikeMethod();
-      ArraysCompareNormalMethod();
+      arraysCompareBikeMethod();
+      arraysCompareNormalMethod();
 
-      ArrayClone();
-      ArrayToString();
-      ArrayReverse();
+      arrayClone();
+      arrayToString();
+      arrayReverse();
 
-      ForToForeach();
-      SaveOurRAM();
+      forToForeach();
+      saveMemory();
 
       // Задания для работы в аудитории
       int[] arr = new int[11];
-      FillArrayRandomly(arr);
-      ReverseArray(arr);
-      SearchInArray(arr);
+      fillArrayRandomly(arr);
+      searchInArray(arr);
 
-      ClassWork1();
-      ClassWork2();
-      ClassWork3(arr);
-      ClassWork4(arr);
-      ClassWork5();
-      ClassWork6();
-      ClassWork7();
-      ClassWork7a();  // С использованием сортировки и выбором 3 крайних значений
-      ClassWork8();
+      classWork1();
+      classWork2();
+      classWork3(arr);
+      classWork4(arr);
+      classWork5();
+      classWork6();
+      classWork7();
+      classWork7a();  // С использованием сортировки и выбором 3 крайних значений
+      classWork8();
 
       // Домашние задания
-      Homework_Example_1();
-      Homework_Example_2();
-      Homework_Example_9();
+      homework_Example_1();
+      homework_Example_2();
+      homework_Example_9();
    }
 
    /**
-    * Одномерные массивы. Пример 1
+    * Одномерные массивы. Пример 1: заполнение значениями поэлементно
     */
-   private static void ArraysExample_1() {
+   private static void arraysExample1() {
       // Счёт элементов массива всегда начинается с 0
 
       System.out.println("\nОдномерные массивы. Пример 1");
@@ -82,7 +81,7 @@ public class Main {
    /**
     * Одномерные массивы. Пример 2: заполнение массива случайными значениями
     */
-   private static void ArraysExample_2() {
+   private static void arraysExample2() {
       System.out.println("\nОдномерные массивы. Пример 2");
 
       int[] array = new int[5];
@@ -105,9 +104,9 @@ public class Main {
    }
 
    /**
-    * Одномерные массивы. Пример 3
+    * Одномерные массивы. Пример 3: объявление с немедленной инициализацией
     */
-   private static void ArraysExample_3() {
+   private static void arraysExample3() {
       System.out.println("\nОдномерные массивы. Пример 3");
 
       int[] array = new int[]{1, 2, 3, 4, 5};
@@ -121,9 +120,9 @@ public class Main {
    }
 
    /**
-    * Одномерные массивы. Пример 4
+    * Одномерные массивы. Пример 4: обращение к неинициализированному массиву
     */
-   private static void ArraysExample_4() {
+   private static void arraysExample4() {
       System.out.println("\nОдномерные массивы. Пример 4");
 
       int[] array = {1, 2, 3, 4, 5};
@@ -137,9 +136,9 @@ public class Main {
    }
 
    /**
-    * Одномерные массивы. Пример 5
+    * Одномерные массивы. Пример 5: поэлементная печать значений массива
     */
-   private static void ArraysExample_5() {
+   private static void arraysExample5() {
       System.out.println("\nОдномерные массивы. Пример 5");
 
       int[] array = new int[5];
@@ -153,9 +152,9 @@ public class Main {
    }
 
    /**
-    * Одномерные массивы. Пример 6
+    * Одномерные массивы. Пример 6: использование массива из 1 элемента, как переменной
     */
-   private static void ArraysExample_6() {
+   private static void arraysExample6() {
       System.out.println("\nОдномерные массивы. Пример 6");
 
       int[] vector = new int[1];
@@ -167,9 +166,9 @@ public class Main {
    }
 
    /**
-    * Одномерные массивы. Пример 7
+    * Одномерные массивы. Пример 7: различные примеры работы с массивом вещественных чисел
     */
-   private static void ArraysExample_7() {
+   private static void arraysExample7() {
       final int N = 10;
       float[] A = new float[N];
 
@@ -229,7 +228,7 @@ public class Main {
       System.out.println("Binary search of 555: " + Arrays.binarySearch(B, 555));
 
 
-      // Для всех элементов
+      // Пузырьковая сортировка
       n = 0;
       for (int i = 0; i < A.length - 1; i++) {
          for (int j = (A.length - 1); j > i; j--) // для всех элементов после i-ого
@@ -260,7 +259,7 @@ public class Main {
       System.out.println();
 
 
-      // Сравнение обычной сортировки и с использованием распараллеливания
+      // Сравнение обычной сортировки и сортировки с использованием распараллеливания
       long start = System.currentTimeMillis();
       Arrays.sort(B);
       System.out.println("Обычная сортировка: " + (System.currentTimeMillis() - start));
@@ -286,58 +285,7 @@ public class Main {
       System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
    }
 
-   /**
-    * Переворот элементов массива
-    *
-    * @param arr массив
-    */
-   private static void ReverseArray(int[] arr) {
-      int a = 2, b = 3;
-      System.out.println(a + ", " + b);
-      a = a + b; // 5
-      b = a - b; // 2
-      a = a - b; // 3
-
-      int c = a;
-      a = b;
-      b = c;
-
-      System.out.println(Arrays.toString(arr));
-      int temp;
-      for (int i = 0; i < arr.length / 2; i++) {
-         temp = arr[0 + i];
-         arr[0 + i] = arr[arr.length - 1 - i];
-         arr[arr.length - 1 - i] = temp;
-      }
-      System.out.println(Arrays.toString(arr));
-   }
-
-   /**
-    * @param arr
-    */
-   private static void SearchInArray(int[] arr) {
-      // Поиск вхождения с использованием линейного поиска
-      int key = 10;
-      boolean isFound = false;
-      for (int i = 0; i < arr.length; i++) {
-         if (arr[i] == key) {
-            System.out.println(i);
-            isFound = true;
-            break;
-         }
-      }
-      if (!isFound)
-         System.out.println("Not found using linear saerch");
-
-      // Поиск вхождения с использованием бинарного поиска
-      int[] arrCopy = arr.clone();
-      Arrays.sort(arrCopy);
-      int pos = Arrays.binarySearch(arrCopy, key);
-      System.out.println(pos >= 0 ? "Found" : "Not found using binary search");
-      System.out.println(Arrays.toString(arr));
-   }
-
-   private static int[] FillArrayRandomly(int[] arr) {
+   private static int[] fillArrayRandomly(int[] arr) {
       for (int i = 0; i < arr.length; i++) {
          arr[i] = r.nextInt(20);
       }
@@ -348,7 +296,7 @@ public class Main {
    /**
     * Клонирование массива
     */
-   private static void ArrayClone() {
+   private static void arrayClone() {
       System.out.println("\nКлонирование массива\n");
 
       int[] a = {10, 20, 30};
@@ -370,7 +318,7 @@ public class Main {
    /**
     * Преобразование элементов массива в строку
     */
-   private static void ArrayToString() {
+   private static void arrayToString() {
 
       System.out.println("\nПреобразование элементов массива в строку");
 
@@ -463,25 +411,61 @@ public class Main {
    /**
     * Перестановка элементов массива в обратном порядке
     */
-   private static void ArrayReverse() {
+   private static void arrayReverse() {
       // Данный метод идеален как вопрос на собеседовании
       System.out.println("\nРеверс элементов массива");
 
-      int[] a = new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1};
-      for (int i = 0; i < a.length / 2; i++) {
-         a[i] = a[i] + a[a.length - 1 - i];
-         a[a.length - 1 - i] = a[i] - a[a.length - 1 - i];
-         a[i] = a[i] - a[a.length - 1 - i];
+      int[] array = new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1};
+      System.out.println(Arrays.toString(array));
+      for (int i = 0; i < array.length / 2; i++) {
+         array[i] = array[i] + array[array.length - 1 - i];
+         array[array.length - 1 - i] = array[i] - array[array.length - 1 - i];
+         array[i] = array[i] - array[array.length - 1 - i];
       }
 
-      System.out.print("Массив после сортировки : ");
-      System.out.println(Arrays.toString(a));
+      System.out.print("Массив после переворота: ");
+      System.out.println(Arrays.toString(array));
+
+
+      // Можно менять местами значения двух переменных без использования вспомогательной
+      int a = 2, b = 3;
+      System.out.println(a + ", " + b);
+
+      a = a + b; // 5
+      b = a - b; // 2
+      a = a - b; // 3
+      System.out.println(a + ", " + b);
+   }
+
+   /**
+    * @param arr
+    */
+   private static void searchInArray(int[] arr) {
+      // Поиск вхождения с использованием линейного поиска
+      int key = 10;
+      boolean isFound = false;
+      for (int i = 0; i < arr.length; i++) {
+         if (arr[i] == key) {
+            System.out.println(i);
+            isFound = true;
+            break;
+         }
+      }
+      if (!isFound)
+         System.out.println("Not found using linear saerch");
+
+      // Поиск вхождения с использованием бинарного поиска
+      int[] arrCopy = arr.clone();
+      Arrays.sort(arrCopy);
+      int pos = Arrays.binarySearch(arrCopy, key);
+      System.out.println(pos >= 0 ? "Found" : "Not found using binary search");
+      System.out.println(Arrays.toString(arr));
    }
 
    /**
     * "Пузырьковая" сортировка по убыванию - от большего к меньшему
     */
-   private static void BubbleSortFromMaxToMin() {
+   private static void bubbleSortFromMaxToMin() {
       System.out.println("\n\nBubbleSort - от большего к меньшему");
       int[] num = {203, 134, 123, -2, 124, 0, 14};
       int j = 0;
@@ -515,7 +499,7 @@ public class Main {
    /**
     * "Пузырьковая" сортировка по возрастанию - от меньшего к большему
     */
-   private static void BubbleSortFromMinToMax() {
+   private static void bubbleSortFromMinToMax() {
       System.out.println("\n\nBubbleSort - от меньшего к большему");
       int[] num = {203, 134, 123, -2, 124, 0, 14};
       int j = 0;
@@ -549,7 +533,7 @@ public class Main {
    /**
     * Сортировка с использованием встроенной "быстрой сортировки" QuickSort
     */
-   private static void QuickSortUseExample() {
+   private static void quickSortUseExample() {
       System.out.println("\n\nСортировка методом QuickSort");
       int[] num = {203, 134, 123, -2, 124, 0, 14};
 
@@ -570,7 +554,7 @@ public class Main {
    /**
     * Сравнение элементов массивов с помощью "изобретения велосипеда"
     */
-   private static void ArraysCompareBikeMethod() {
+   private static void arraysCompareBikeMethod() {
       System.out.println("\nСравнение элементов массивов путём изобретения велосипеда");
 
       int[] a = {10, 20, 30};
@@ -595,7 +579,7 @@ public class Main {
    /**
     * Нормальное сравнение элементов массивов, используя встроенный метод класса Arrays
     */
-   private static void ArraysCompareNormalMethod() {
+   private static void arraysCompareNormalMethod() {
       System.out.println("\nСравнение элементов массивов с помощью Arrays.equals");
       int[] a = {10, 20, 30};
       int[] b = {10, 20, 30};
@@ -610,7 +594,7 @@ public class Main {
    /**
     * Переход от for к foreach
     */
-   private static void ForToForeach() {
+   private static void forToForeach() {
       System.out.println("\nПереход от for к foreach");
 
       int[] array = {10, 20, 30};
@@ -638,9 +622,9 @@ public class Main {
    /**
     * Оптимизируем использование оперативной памяти
     */
-   private static void SaveOurRAM() {
-      // Динамический диапазон элементов для всех массивов от 0 до 100
-      // В таком случае, оптимально будет выбрать массив типа byte
+   private static void saveMemory() {
+      // Если динамический диапазон значений элементов для всех массивов от 0 до 100,
+      // то в таком случае, оптимально будет выбрать массив типа byte,
       // чтобы не расходовать оперативную память впустую
 
       final int N = 10000;
@@ -656,7 +640,7 @@ public class Main {
     * стоимости купли-продажи в банках города. В городе N банков. Составьте
     * программу, определяющую, какой банк выбрать, чтобы выгодно обменять доллары на гривны.
     */
-   private static void ClassWork1() {
+   private static void classWork1() {
       Random random = new Random();
       final int N = 20;
       double[] buy = new double[N], sell = new double[N];
@@ -695,7 +679,7 @@ public class Main {
     * Дан целочисленный массив с количеством элементов n. Напечатать те его
     * элементы, индексы которых являются степенями двойки (1, 2, 4, 8, 16, ...)
     */
-   private static void ClassWork2() {
+   private static void classWork2() {
       int[] values = new int[40];
       for (int i = 0; i < values.length; i++) {
          values[i] = (int) (Math.random() * 100);
@@ -717,9 +701,9 @@ public class Main {
    /**
     * Найти сумму четных элементов массива целых чисел
     *
-    * @param arr
+    * @param arr массив
     */
-   private static void ClassWork3(int[] arr) {
+   private static void classWork3(int[] arr) {
       int sum = 0;
       for (int item : arr) {
          if (item % 2 == 0) {
@@ -731,11 +715,11 @@ public class Main {
    }
 
    /**
-    * Найти произведение элементов массива целых чисел, которые кратны 9
+    * Найти произведение элементов массива целых чисел, которые кратны 9    *
     *
-    * @param arr
+    * @param arr массив
     */
-   private static void ClassWork4(int[] arr) {
+   private static void classWork4(int[] arr) {
       int mult = 1;
       for (int i = 0; i < arr.length; i++) {
          if (arr[i] % 9 == 0) {
@@ -752,7 +736,7 @@ public class Main {
     * Имеется 30-элементный массив, содержащий сведения о том, был ли соответствующий день наблюдения пасмурным или солнечным.
     * Написать программу, определяющую местоположение улитки к концу 30-го дня наблюдения.
     */
-   private static void ClassWork5() {
+   private static void classWork5() {
       final int DAYS = 365, A = 100, L = 500;
       int[] weather = new int[DAYS];
       int current = A;
@@ -783,7 +767,7 @@ public class Main {
     * месяц с максимальной и месяц с минимальной прибылью,
     * количество месяцев с положительной прибылью.
     */
-   private static void ClassWork6() {
+   private static void classWork6() {
       final int N = 12, INCOME_RANGE = 100_000;
       double[] r = new double[N];
       double[] p = new double[N];
@@ -826,6 +810,7 @@ public class Main {
       for (int i = 0; i < N; i++) {
          System.out.print(String.format("%10.2f", z[i]));
       }
+
       System.out.println(System.lineSeparator() + "Итоговая прибыль: " + String.format("%10.2f", all));
       System.out.println("Месяц с максимальной прибылью: " + (indMax + 1));
       System.out.println("Месяц с минимальной прибылью: " + (indMin + 1));
@@ -838,7 +823,7 @@ public class Main {
     * <p>
     * Способ с поиском без использования сортировки
     */
-   private static void ClassWork7() {
+   private static void classWork7() {
       System.out.println();
       final int N = 15, MAXD = 7, MAXL = 3;
       double[] h = new double[N];
@@ -910,10 +895,9 @@ public class Main {
    /**
     * На соревнованиях по прыжкам в высоту и в длину получены два массива результатов H(n) и D(n).
     * Определить три лучших и три худших результата в каждом виде соревнований.
-    * <p>
     * Способ с использованием сортировки
     */
-   private static void ClassWork7a() {
+   private static void classWork7a() {
       System.out.println();
       final int N = 10;
       float[] H = new float[N], D = new float[N];
@@ -926,17 +910,17 @@ public class Main {
       System.out.println(Arrays.toString(H));
       System.out.println(Arrays.toString(D));
 
-      SubTask7(H, "H");
-      SubTask7(D, "D");
+      classWork7_subTask(H, "H");
+      classWork7_subTask(D, "D");
    }
 
    /**
-    * Отображение 3 лучших и 3 худших результата (по 3 с каждой стороны после сортировки)
+    * Отображение 3 лучших и 3 худших результатов (по 3 с каждой стороны после сортировки)
     *
-    * @param arr
-    * @param arrayName
+    * @param arr       массив
+    * @param arrayName подпись для отображения на печати
     */
-   private static void SubTask7(float[] arr, String arrayName) {
+   private static void classWork7_subTask(float[] arr, String arrayName) {
       float[] copyH = arr.clone();
 
       Arrays.sort(copyH);
@@ -956,7 +940,7 @@ public class Main {
     * Написать алгоритм переворота элементов массива (смены мест в заданном массиве):
     * 1-го элемента с последним, 2-го с предпоследним и так далее.
     */
-   private static void ClassWork8() {
+   private static void classWork8() {
       System.out.println();
       final int N = 15;
       int[] array = new int[N];
@@ -982,7 +966,7 @@ public class Main {
     * В массиве хранятся сведения о стоимости 12 различных предметов.
     * Определить общую стоимость всех предметов.
     */
-   private static void Homework_Example_1() {
+   private static void homework_Example_1() {
       System.out.println("\nТиповая задача из домашнего задания. Пример 1");
 
       double[] cost = new double[12];
@@ -1009,7 +993,7 @@ public class Main {
     * б) верно ли, что сумма квадратов элементов массива есть пятизначное число;
     * в) верно ли, что сумма элементов массива неотрицательна.
     */
-   private static void Homework_Example_2() {
+   private static void homework_Example_2() {
       System.out.println("\nТиповая задача из домашнего задания. Пример 2");
 
       // Переменная для генерации случайных чисел
@@ -1060,7 +1044,7 @@ public class Main {
     * а) все четные элементы, стоящие на нечетных местах;
     * б) все элементы, кратные 3 или 5.
     */
-   private static void Homework_Example_9() {
+   private static void homework_Example_9() {
       int[] array = new int[12];
       for (int i = 0; i < array.length; i++) {
          array[i] = (int) (Math.random() * 10);
