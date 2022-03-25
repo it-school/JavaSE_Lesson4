@@ -10,51 +10,51 @@ public class Main {
    private static final Random random = new Random();
 
    public static void main(String[] args) {
-      arraysExample1();
-      arraysExample2();
-      arraysExample3();
-      arraysExample4();
-      arraysExample5();
-      arraysExample6();
+//      arraysExample1();
+//      arraysExample2();
+//      arraysExample3();
+//      arraysExample4();
+//      arraysExample5();
+//      arraysExample6();
       arraysExample7();
-
-      maxElementInArray();
-      minElementInArray();
-      findAverageValue();
-
-      bubbleSortFromMaxToMin();
-      bubbleSortFromMinToMax();
-      quickSortUseExample();
-
-      arraysCompareBikeMethod();
-      arraysCompareNormalMethod();
-
-      arrayClone();
-      arrayToString();
-      arrayReverse();
-
-      forToForeach();
-      saveMemory();
-
-      // Задания для работы в аудитории
-      int[] arr = new int[11];
-      fillArrayRandomly(arr);
-      searchInArray(arr);
-
-      classWork1();
-      classWork2();
-      classWork3(arr);
-      classWork4(arr);
-      classWork5();
-      classWork6();
-      classWork7();
-      classWork7a();  // С использованием сортировки и выбором 3 крайних значений
-      classWork8();
-
-      // Домашние задания
-      homework_Example_1();
-      homework_Example_2();
-      homework_Example_9();
+//
+//      maxElementInArray();
+//      minElementInArray();
+//      findAverageValue();
+//
+//      bubbleSortFromMaxToMin();
+//      bubbleSortFromMinToMax();
+//      quickSortUseExample();
+//
+//      arraysCompareBikeMethod();
+//      arraysCompareNormalMethod();
+//
+//      arrayClone();
+//      arrayToString();
+//      arrayReverse();
+//
+//      forToForeach();
+//      saveMemory();
+//
+//      // Задания для работы в аудитории
+//      int[] arr = new int[11];
+//      fillArrayRandomly(arr);
+//      searchInArray(arr);
+//
+//      classWork1();
+//      classWork2();
+//      classWork3(arr);
+//      classWork4(arr);
+//      classWork5();
+//      classWork6();
+//      classWork7();
+//      classWork7a();  // С использованием сортировки и выбором 3 крайних значений
+//      classWork8();
+//
+//      // Домашние задания
+//      homework_Example_1();
+//      homework_Example_2();
+//      homework_Example_9();
    }
 
    /**
@@ -206,33 +206,39 @@ public class Main {
       for (int i = 0; i < B.length; i++) {
          B[i] = (int) (5 + Math.random() * 100000);
       }
+      int[] C = B.clone();
 
       // System.out.println(Arrays.toString(B));
       System.out.println();
-      int n = 0;
+      int n = 0, index = -1;
       // Линейный поиск значения в массиве
       for (int i = 0; i < B.length; i++) {
          if (B[i] == 555) {
-            System.out.println("Linear search of 555: " + i);
+//            System.out.println("Linear search of 555: " + i);
+            index = i;
             n++;
-            // break;
+//            break;
          }
       }
 
+      System.out.println("\nДлина массива: " + B.length);
+      System.out.println("Число 555 встречается в массиве " + n + " раз");
+      System.out.println("Последняя позиция числа 555 в массиве: " + index);
 
       // Линейный поиск значения в массиве в обратном порядке
       for (int i = B.length - 1; i > 0; i--) {
          if (B[i] == 555) {
-            System.out.println("Linear search of 555: " + i);
+//            System.out.println("Reverse Linear search of 555: " + i);
+            index = i;
             n++;
-            break;
+//            break;
          }
       }
+      System.out.println("Первая позиция числа 555 в массиве: " + index);
 
       // Бинарный поиск вхождения значения в массив
-      System.out.println(n);
       Arrays.sort(B);
-      System.out.println("Binary search of 555: " + Arrays.binarySearch(B, 555));
+      System.out.println("\nBinary search of 555: " + Arrays.binarySearch(B, 555));
 
 
       // Пузырьковая сортировка
@@ -249,32 +255,29 @@ public class Main {
             n++;
          }
       }
-      System.out.println(Arrays.toString(A));
-      System.out.println(n);
-
+      System.out.println(System.lineSeparator() + "Отсортированный массив: " + Arrays.toString(A) + System.lineSeparator());
 
       // Поиск минимального значения массива
-      int[] C = B.clone();
       int indexMin = 0;
       for (int i = 1; i < C.length; i++) {
          if (C[i] <= C[indexMin]) {
             indexMin = i;
             break;
          }
-
       }
-      System.out.println("Minimum value: " + C[indexMin] + ", it's index is: " + indexMin);
+      System.out.println(System.lineSeparator() + "Поиск минимального значения: ");
+      System.out.println("Минимум: " + C[indexMin] + ", его индекс: " + indexMin);
       System.out.println();
 
 
       // Сравнение обычной сортировки и сортировки с использованием распараллеливания
       long start = System.currentTimeMillis();
       Arrays.sort(B);
-      System.out.println("Обычная сортировка: " + (System.currentTimeMillis() - start));
+      System.out.println("\nОбычная сортировка: " + (System.currentTimeMillis() - start) + " мС");
 
       start = System.currentTimeMillis();
       Arrays.parallelSort(C);
-      System.out.println("Сортировка с распараллеливанием: " + (System.currentTimeMillis() - start));
+      System.out.println("Сортировка с распараллеливанием: " + (System.currentTimeMillis() - start) + " мС");
 
 
       // Изменение размеров массива
@@ -282,15 +285,15 @@ public class Main {
       for (int i = 0; i < arr1.length; i++) {
          arr1[i] = (int) (Math.random() * 1000);
       }
-      System.out.println("Initial array:                 " + Arrays.toString(arr1));
+      System.out.println("\nInitial array:                  " + Arrays.toString(arr1));
 
       int[] arr2 = Arrays.copyOf(arr1, 5);
-      System.out.println("SubCopy of initial array:      " + Arrays.toString(arr2));
+      System.out.println("SubCopy of initial array:       " + Arrays.toString(arr2));
 
       arr1 = arr2;
-      System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
+      System.out.println("Replaced copy of initial array: " + Arrays.toString(arr1));
       arr2[3] = 555;
-      System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
+      System.out.println("Modified copy of resized copy:  " + Arrays.toString(arr1));
    }
 
    /**
