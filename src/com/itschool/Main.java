@@ -2,6 +2,9 @@ package com.itschool;
 
 import java.util.*;
 
+/**
+ * Примеры на тему: "Одномерные массивы в Java"
+ */
 public class Main {
    private static final Scanner scanner = new Scanner(System.in);
    private static final Random random = new Random();
@@ -137,7 +140,7 @@ public class Main {
    }
 
    /**
-    * Одномерные массивы. Пример 5: поэлементная печать значений массива
+    * Одномерные массивы. Пример 5: поэлементная печать значений массива используя цикл foreach
     */
    private static void arraysExample5() {
       System.out.println("\nОдномерные массивы. Пример 5");
@@ -146,9 +149,9 @@ public class Main {
 
       System.out.print("Массив array : ");
 
-      // Вывод на экран значений элементов массива.
-      for (int i = 0; i < array.length; i++) {
-         System.out.print(array[i] + "  ");
+      // Вывод на экран значений элементов массива используя цикл foreach
+      for (int element : array) {
+         System.out.print(element + "  ");
       }
    }
 
@@ -290,6 +293,11 @@ public class Main {
       System.out.println("Resized copy of initial array: " + Arrays.toString(arr1));
    }
 
+   /**
+    * Заполнение массива случайными значениями
+    *
+    * @param arr массив для заполнения
+    */
    private static void fillArrayRandomly(int[] arr) {
       for (int i = 0; i < arr.length; i++) {
          arr[i] = random.nextInt(20);
@@ -342,20 +350,18 @@ public class Main {
 
       int[] array = {21, 243, 415, 54, -2, 31, 98, 10, -2};
 
-      // Обязательно присваивать минимальному элементу нулевой элемент массива
+      // Обязательно присваивать индексу минимального элемента 0 - позиция начального элемента для поиска
       int indexMin = 0;
 
+      // Выводим элементы массива на экран
       System.out.print("Исходный массив : ");
-
       for (int a : array) {
-         // Выводим элементы массива на экран
          System.out.print(a + "  ");
-         // Сравниваем текущий минимальный элемент с i-ым элементом массива
       }
 
+      // Сравниваем текущий минимальный элемент с i-ым элементом массива
       for (int i = 1; i < array.length; i++) {
-         if (array[i] < array[indexMin])
-            indexMin = i;
+         if (array[i] < array[indexMin]) indexMin = i;
       }
 
       System.out.println("\nМинимальный элемент " + array[indexMin] + ", его индекс: " + indexMin);
@@ -369,7 +375,7 @@ public class Main {
 
       int[] array = {21, 243, 415, 54, -2, 31, 98, 10};
 
-      // Обязательно присваивать максимальному элементу нулевой элемент массива
+      // Обязательно присваивать максимальному элементу первый элемент массива (с индексом 0)
       int max_element = array[0];
 
       System.out.print("Исходный массив : ");
@@ -453,14 +459,13 @@ public class Main {
             break;
          }
       }
-      if (!isFound)
-         System.out.println("Not found using linear search");
+      if (!isFound) System.out.println("Искомое значение в массиве не найдено!");
 
       // Поиск вхождения с использованием бинарного поиска
       int[] arrCopy = arr.clone();
       Arrays.sort(arrCopy);
       int pos = Arrays.binarySearch(arrCopy, key);
-      System.out.println(pos >= 0 ? "Found" : "Not found using binary search");
+      System.out.println(pos >= 0 ? "Значение обнаружено" : "Искомое значение в массиве не найдено!");
       System.out.println(Arrays.toString(arr));
    }
 
@@ -552,7 +557,7 @@ public class Main {
    }
 
    /**
-    * Сравнение элементов массивов с помощью "изобретения велосипеда"
+    * Поэлементное сравнение массивов (с помощью "изобретения велосипеда")
     */
    private static void arraysCompareBikeMethod() {
       System.out.println("\nСравнение элементов массивов путём изобретения велосипеда");
@@ -569,6 +574,7 @@ public class Main {
             }
          }
       }
+
       if (flag) {
          System.out.println("Элементы массивов a и b - равны");
       } else {
@@ -636,6 +642,7 @@ public class Main {
       long[] a_long = new long[N];    // Займет в памяти 80000 байт
    }
 
+
    /**
     * У вас есть доллары. Вы хотите обменять их на гривны. Есть информация о
     * стоимости купли-продажи в банках города. В городе N банков. Составьте
@@ -645,8 +652,8 @@ public class Main {
       final int N = 20;
       double[] buy = new double[N], sell = new double[N];
       for (int i = 0; i < N; i++) {
-         buy[i] = 26 + random.nextDouble() * 0.4;
-         sell[i] = 26.2 + random.nextDouble() * 0.5;
+         buy[i] = 29.2 + random.nextDouble() * 0.4;
+         sell[i] = 29.5 + random.nextDouble() * 0.5;
       }
 
       for (int i = 1; i <= N; i++) {
@@ -676,8 +683,8 @@ public class Main {
    }
 
    /**
-    * Дан целочисленный массив с количеством элементов n. Напечатать те его
-    * элементы, индексы которых являются степенями двойки (1, 2, 4, 8, 16, ...)
+    * Дан целочисленный массив с количеством элементов n. Напечатать те его элементы,
+    * индексы которых являются степенями двойки (1, 2, 4, 8, 16, ...)
     */
    private static void classWork2() {
       int[] values = new int[40];
@@ -688,8 +695,7 @@ public class Main {
 
       System.out.println();
       for (int i = 0; i < values.length; i++) {
-         if (i == 1 || i == 2 || i == 4 || i == 8 || i == 16 || i == 32)
-            System.out.printf("%3d,", values[i]);
+         if (i == 1 || i == 2 || i == 4 || i == 8 || i == 16 || i == 32) System.out.printf("%3d,", values[i]);
       }
 
       System.out.println();
@@ -821,7 +827,7 @@ public class Main {
     * На соревнованиях по прыжкам в высоту и в длину получены два массива результатов H(n) и D(n).
     * Определить три лучших и три худших результата в каждом виде соревнований.
     * <p>
-    * Способ с поиском без использования сортировки
+    * Способ с поиском и без использования сортировки
     */
    private static void classWork7() {
       System.out.println();
