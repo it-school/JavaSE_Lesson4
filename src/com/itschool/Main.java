@@ -10,51 +10,51 @@ public class Main {
    private static final Random random = new Random();
 
    public static void main(String[] args) {
-//      arraysExample1();
-//      arraysExample2();
-//      arraysExample3();
-//      arraysExample4();
-//      arraysExample5();
-//      arraysExample6();
+      arraysExample1();
+      arraysExample2();
+      arraysExample3();
+      arraysExample4();
+      arraysExample5();
+      arraysExample6();
       arraysExample7();
-//
-//      maxElementInArray();
-//      minElementInArray();
-//      findAverageValue();
-//
-//      bubbleSortFromMaxToMin();
-//      bubbleSortFromMinToMax();
-//      quickSortUseExample();
-//
-//      arraysCompareBikeMethod();
-//      arraysCompareNormalMethod();
-//
-//      arrayClone();
-//      arrayToString();
-//      arrayReverse();
-//
-//      forToForeach();
-//      saveMemory();
-//
-//      // Задания для работы в аудитории
-//      int[] arr = new int[11];
-//      fillArrayRandomly(arr);
-//      searchInArray(arr);
-//
-//      classWork1();
-//      classWork2();
-//      classWork3(arr);
-//      classWork4(arr);
-//      classWork5();
-//      classWork6();
-//      classWork7();
-//      classWork7a();  // С использованием сортировки и выбором 3 крайних значений
-//      classWork8();
-//
-//      // Домашние задания
-//      homework_Example_1();
-//      homework_Example_2();
-//      homework_Example_9();
+
+      maxElementInArray();
+      minElementInArray();
+      findAverageValue();
+
+      bubbleSortFromMaxToMin();
+      bubbleSortFromMinToMax();
+      quickSortUseExample();
+
+      arraysCompareBikeMethod();
+      arraysCompareNormalMethod();
+
+      arrayClone();
+      arrayToString();
+      arrayReverse();
+
+      forToForeach();
+      saveMemory();
+
+      // Задания для работы в аудитории
+      int[] arr = new int[11];
+      fillArrayRandomly(arr);
+      searchInArray(arr);
+
+      classWork1();
+      classWork2();
+      classWork3(arr);
+      classWork4(arr);
+      classWork5();
+      classWork6();
+      classWork7();
+      classWork7a();  // С использованием сортировки и выбором 3 крайних значений
+      classWork8();
+
+      // Домашние задания
+      homework_Example_1();
+      homework_Example_2();
+      homework_Example_9();
    }
 
    /**
@@ -206,7 +206,6 @@ public class Main {
       for (int i = 0; i < B.length; i++) {
          B[i] = (int) (5 + Math.random() * 100000);
       }
-      int[] C = B.clone();
 
       // System.out.println(Arrays.toString(B));
       System.out.println();
@@ -217,7 +216,7 @@ public class Main {
 //            System.out.println("Linear search of 555: " + i);
             index = i;
             n++;
-//            break;
+            break;
          }
       }
 
@@ -226,12 +225,12 @@ public class Main {
       System.out.println("Последняя позиция числа 555 в массиве: " + index);
 
       // Линейный поиск значения в массиве в обратном порядке
-      for (int i = B.length - 1; i > 0; i--) {
+      for (int i = B.length - 1; i >= 0; i--) {
          if (B[i] == 555) {
 //            System.out.println("Reverse Linear search of 555: " + i);
             index = i;
             n++;
-//            break;
+            break;
          }
       }
       System.out.println("Первая позиция числа 555 в массиве: " + index);
@@ -257,12 +256,12 @@ public class Main {
       }
       System.out.println(System.lineSeparator() + "Отсортированный массив: " + Arrays.toString(A) + System.lineSeparator());
 
+      int[] C = B.clone();
       // Поиск минимального значения массива
       int indexMin = 0;
       for (int i = 1; i < C.length; i++) {
-         if (C[i] <= C[indexMin]) {
+         if (C[i] < C[indexMin]) {
             indexMin = i;
-            break;
          }
       }
       System.out.println(System.lineSeparator() + "Поиск минимального значения: ");
@@ -366,8 +365,20 @@ public class Main {
       for (int i = 1; i < array.length; i++) {
          if (array[i] < array[indexMin]) indexMin = i;
       }
-
       System.out.println("\nМинимальный элемент " + array[indexMin] + ", его индекс: " + indexMin);
+
+      // Сравниваем текущий минимальный элемент с i-ым элементом массива
+      int min = array[0];
+      indexMin = 0;
+      int index = 0;
+      for (int element : array) {
+         if (element < min) {
+            min = element;
+            indexMin = index;
+         }
+         index++;
+      }
+      System.out.println("\nМинимальный элемент " + min + ", его индекс: " + indexMin);
    }
 
    /**
@@ -791,7 +802,7 @@ public class Main {
       Locale.setDefault(Locale.US);
       System.out.println("Расходы: ");
       for (int i = 0; i < N; i++) {
-         System.out.printf("%10.2f", r[i]);
+         System.out.printf("%10.2f%s", r[i], Currency.getInstance(Locale.UK).getSymbol());
       }
       System.out.println(System.lineSeparator() + "Доходы:  ");
       for (int i = 0; i < N; i++) {
@@ -1034,7 +1045,7 @@ public class Main {
          System.out.println("Сумма элементов массива есть нечетное число");
       }
 
-      if (sumOfElementsSqr >= 10000) {
+      if (sumOfElementsSqr >= 10000 && sumOfElementsSqr < 100000) {
          System.out.println("Сумма квадратов элементов массива есть пятизначное число");
       } else {
          System.out.println("Сумма квадратов элементов массива есть не пятизначное число");
@@ -1067,6 +1078,10 @@ public class Main {
             for (int j = i; j < array.length - 1; j++) {
                array[j] = array[j + 1];
             }
+            //  1 2 3 4 5 6
+            //  1 3 4 5 6 _
+            //  1 3 5 6 _
+            //  1 3 5 _
             currentLength--;
             array = Arrays.copyOf(array, currentLength);
             System.out.println(Arrays.toString(array));
